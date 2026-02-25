@@ -1,0 +1,3818 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жас Ғалым</title>
+    <link rel="icon" href="were.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* БАРЛЫҚ CSS СТИЛЬДЕР БЛОКЫ */
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0052d4;
+            --secondary: #00c9ff;
+            --accent: #ff3366;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --light: #ffffff;
+            --dark: #1a1a2e;
+            --gray: #64748b;
+            --gray-light: #f1f5f9;
+            --gray-bg: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--gray-bg) 0%, #eef2ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+            min-height: 100vh;
+        }
+
+        /* Анимациялар */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-slow { animation: pulse 2s ease-in-out infinite; }
+        .animate-slide-left { animation: slideInLeft 0.8s ease-out forwards; }
+        .animate-slide-right { animation: slideInRight 0.8s ease-out forwards; }
+        .animate-scale-in { animation: scaleIn 0.6s ease-out forwards; }
+        .animate-rotate { animation: rotate 20s linear infinite; }
+
+        /* Хедер */
+        header {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+            animation: scaleIn 0.6s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .school-info h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 3px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .school-info .subtitle {
+            font-size: 12px;
+            color: var(--gray);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        /* Мобильдік мәзір */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(0, 102, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        /* Навигация */
+        .main-nav {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            position: sticky;
+            top: 90px;
+            z-index: 999;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .nav-link {
+            padding: 18px 25px;
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 3px solid transparent;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .nav-link i {
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .nav-link:hover i {
+            transform: scale(1.2);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: linear-gradient(to bottom, rgba(0, 102, 255, 0.05), transparent);
+        }
+
+        .nav-link:hover:not(.active) {
+            color: var(--primary-dark);
+            background: rgba(0, 102, 255, 0.03);
+            transform: translateY(-2px);
+        }
+
+        /* Тіл ауыстырғышы */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 0.6s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .lang-btn:hover::before {
+            left: 100%;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(0, 102, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Негізгі бөлім */
+        .hero-section {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('all.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            z-index: 1;
+            filter: blur(1px);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.9) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .hero-motto {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.1);
+            border-left: 4px solid var(--primary);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--dark);
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 25px 0 18px;
+            padding-left: 15px;
+            border-left: 4px solid var(--primary);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Мұғалім бөлімі */
+        .teacher-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 201, 255, 0.05));
+            border-radius: 20px;
+            padding: 35px;
+            margin-top: 40px;
+            border: 1px solid rgba(0, 102, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teacher-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .teacher-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .teacher-photo-container {
+            flex-shrink: 0;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .teacher-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .teacher-photo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .teacher-info {
+            flex: 1;
+        }
+
+        .experience-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .experience-btn:hover::before {
+            left: 100%;
+        }
+
+        .experience-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.4);
+        }
+
+        /* Модалды терезе */
+        .experience-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1002;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        .experience-content {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 550px;
+            width: 100%;
+            position: relative;
+            animation: scaleIn 0.4s ease-out;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent), #ff6b6b);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+        }
+
+        .close-btn:hover {
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 51, 102, 0.4);
+        }
+
+        /* Модульдер */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .module-card {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            border-radius: 18px;
+            padding: 30px;
+            border: 1px solid var(--gray-light);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .module-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.15);
+        }
+
+        .module-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+
+        .module-card:nth-child(2)::before {
+            background: linear-gradient(to bottom, var(--secondary), #92fe9d);
+        }
+
+        .module-card:nth-child(3)::before {
+            background: linear-gradient(to bottom, var(--accent), #ff6b6b);
+        }
+
+        .module-image-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .module-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .module-card:hover .module-image {
+            transform: scale(1.1);
+        }
+
+        /* Кесте */
+        .plan-table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 15px;
+            border: 1px solid var(--gray-light);
+            background: var(--light);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .plan-table th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-weight: 600;
+            padding: 16px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .plan-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--gray-light);
+            font-size: 15px;
+            transition: background 0.3s;
+        }
+
+        .plan-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.01);
+        }
+
+        .plan-table tr:hover {
+            background: rgba(0, 102, 255, 0.05);
+        }
+
+        .quarter-row {
+            background: linear-gradient(135deg, var(--gray-bg), #eef2ff) !important;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* Тапсырмалар тізімі */
+        .tasks-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .tasks-list li {
+            padding: 12px 0 12px 35px;
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 16px;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .tasks-list li:nth-child(1) { animation-delay: 0.1s; }
+        .tasks-list li:nth-child(2) { animation-delay: 0.2s; }
+        .tasks-list li:nth-child(3) { animation-delay: 0.3s; }
+        .tasks-list li:nth-child(4) { animation-delay: 0.4s; }
+        .tasks-list li:nth-child(5) { animation-delay: 0.5s; }
+        .tasks-list li:nth-child(6) { animation-delay: 0.6s; }
+        .tasks-list li:nth-child(7) { animation-delay: 0.7s; }
+
+        .tasks-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 18px;
+            width: 25px;
+            height: 25px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .tasks-list li:hover::before {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.2);
+        }
+
+        /* ЖЕТІСТІКТЕР БӨЛІМІ */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .achievement-card {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gray-light);
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            filter: grayscale(30%);
+            position: relative;
+        }
+
+        .achievement-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.15);
+            filter: grayscale(0%);
+            z-index: 10;
+        }
+
+        .achievement-image-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .achievement-card:hover .achievement-image {
+            transform: scale(1.1);
+        }
+
+        .achievement-info {
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), var(--light));
+        }
+
+        .achievement-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .achievement-student {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .achievement-student i {
+            color: var(--accent);
+        }
+
+        .achievement-year {
+            font-size: 13px;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .achievement-year i {
+            color: var(--warning);
+        }
+
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+            color: white;
+            padding: 50px 20px 30px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 10px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            margin-top: 30px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Жоғарыға өту түймесі */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px) scale(0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.4);
+            font-size: 20px;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .scroll-top:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 12px 40px rgba(0, 102, 255, 0.6);
+        }
+
+        /* Тесттер бөлімі */
+        .test-section {
+            background: linear-gradient(135deg, rgba(0, 201, 255, 0.05), rgba(146, 254, 157, 0.05));
+            border-left: 4px solid var(--secondary);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+        }
+
+        .class-selector {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .class-btn {
+            padding: 12px 25px;
+            background: var(--light);
+            border: 2px solid var(--gray-light);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .class-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .class-btn:hover::before {
+            left: 100%;
+        }
+
+        .class-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .class-btn:hover:not(.active) {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .test-container {
+            display: none;
+        }
+
+        .test-container.active {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .question {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .question:nth-child(1) { animation-delay: 0.1s; }
+        .question:nth-child(2) { animation-delay: 0.2s; }
+        .question:nth-child(3) { animation-delay: 0.3s; }
+        .question:nth-child(4) { animation-delay: 0.4s; }
+        .question:nth-child(5) { animation-delay: 0.5s; }
+        .question:nth-child(6) { animation-delay: 0.6s; }
+        .question:nth-child(7) { animation-delay: 0.7s; }
+        .question:nth-child(8) { animation-delay: 0.8s; }
+        .question:nth-child(9) { animation-delay: 0.9s; }
+        .question:nth-child(10) { animation-delay: 1.0s; }
+        .question:nth-child(11) { animation-delay: 1.1s; }
+        .question:nth-child(12) { animation-delay: 1.2s; }
+        .question:nth-child(13) { animation-delay: 1.3s; }
+        .question:nth-child(14) { animation-delay: 1.4s; }
+        .question:nth-child(15) { animation-delay: 1.5s; }
+
+        .question-number {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .option {
+            padding: 15px 20px;
+            background: var(--gray-bg);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+
+        .option::before {
+            content: '○';
+            font-size: 14px;
+            color: var(--gray);
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            background: rgba(0, 102, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: rgba(0, 102, 255, 0.15);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .option.selected::before {
+            content: '●';
+            color: var(--primary);
+        }
+
+        .option.correct {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .option.correct::before {
+            content: '✓';
+            color: var(--success);
+        }
+
+        .option.incorrect {
+            background: rgba(255, 51, 102, 0.1);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .option.incorrect::before {
+            content: '✗';
+            color: var(--accent);
+        }
+
+        .test-controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .test-btn {
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .test-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .test-btn:hover::before {
+            left: 100%;
+        }
+
+        .test-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.4);
+        }
+
+        .test-btn.secondary {
+            background: linear-gradient(135deg, var(--gray-light), #e2e8f0);
+            color: var(--dark);
+        }
+
+        .test-btn.secondary:hover {
+            background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+            color: white;
+        }
+
+        /* Диагностика графигі */
+        .diagnostic-container {
+            margin: 35px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .diagnostic-chart {
+            width: 100%;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .chart-bar {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .chart-bar:nth-child(1) { animation-delay: 0.1s; }
+        .chart-bar:nth-child(2) { animation-delay: 0.2s; }
+        .chart-bar:nth-child(3) { animation-delay: 0.3s; }
+
+        .chart-label {
+            width: 120px;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 16px;
+        }
+
+        .chart-bar-container {
+            flex: 1;
+            height: 35px;
+            background: var(--gray-light);
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 0 25px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            color: white;
+            font-weight: 700;
+            font-size: 15px;
+            min-width: 50px;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .chart-percentage {
+            width: 60px;
+            text-align: right;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .result-summary {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 201, 255, 0.05));
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid rgba(0, 102, 255, 0.1);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 16px;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .result-item:nth-child(1) { animation-delay: 0.1s; }
+        .result-item:nth-child(2) { animation-delay: 0.2s; }
+        .result-item:nth-child(3) { animation-delay: 0.3s; }
+        .result-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .result-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Қосымша стильдер */
+        .highlight {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 201, 255, 0.05));
+            border-left: 4px solid var(--primary);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 102, 255, 0.1);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Навигация үшін прогресс жолағы */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+
+        /* Мұғалімдерге бөлімі үшін стильдер */
+        .teachers-section {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.05), rgba(255, 235, 59, 0.05));
+            border-left: 4px solid var(--warning);
+        }
+
+        .methodology-content {
+            line-height: 1.8;
+            font-size: 16px;
+            color: var(--dark);
+        }
+
+        .methodology-content h4 {
+            font-size: 18px;
+            color: var(--primary-dark);
+            margin: 20px 0 10px;
+            padding-left: 10px;
+            border-left: 3px solid var(--warning);
+        }
+
+        .methodology-content ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .methodology-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 5px;
+        }
+
+        .methodology-content li::before {
+            content: '•';
+            color: var(--warning);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        .checklist-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .checklist-table th {
+            background: linear-gradient(135deg, var(--warning), #ff9800);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .checklist-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--gray-light);
+            vertical-align: middle;
+        }
+
+        .checklist-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .checklist-table tr:nth-child(even) {
+            background: rgba(255, 193, 7, 0.03);
+        }
+
+        .checkbox-cell {
+            text-align: center;
+            width: 80px;
+        }
+
+        .checkbox-cell input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .timeline-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), #fffde7);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--warning), #ff9800);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+
+        .timeline-dot {
+            width: 30px;
+            height: 30px;
+            background: var(--warning);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
+        }
+
+        .timeline-month {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .timeline-action {
+            font-size: 13px;
+            color: var(--gray);
+            padding: 0 5px;
+        }
+
+        .portfolio-structure {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 201, 255, 0.05));
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid rgba(0, 102, 255, 0.1);
+        }
+
+        .portfolio-structure h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* АДАПТИВТІЛІК МОБИЛЬДІК ҮШІН */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                width: 44px;
+                height: 44px;
+            }
+            
+            .school-info h1 {
+                font-size: 18px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 999;
+            }
+            
+            .main-nav.active {
+                height: auto;
+                padding: 15px 0;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                padding: 0;
+            }
+            
+            .nav-link {
+                padding: 18px 25px;
+                border-left: 3px solid transparent;
+                border-bottom: none;
+            }
+            
+            .nav-link.active {
+                border-left-color: var(--primary);
+            }
+            
+            .lang-switcher {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .hero-section {
+                min-height: 60vh;
+                padding: 30px 15px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-motto {
+                font-size: 1.4rem;
+                padding: 15px;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 0 15px;
+                margin: 30px auto;
+            }
+            
+            section {
+                padding: 30px 20px;
+                border-radius: 18px;
+            }
+            
+            h2 {
+                font-size: 26px;
+            }
+            
+            h3 {
+                font-size: 22px;
+            }
+            
+            .teacher-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .teacher-photo {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 46px;
+                height: 46px;
+            }
+            
+            .test-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .test-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .class-selector {
+                justify-content: center;
+            }
+            
+            .chart-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .chart-bar-container {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .chart-label {
+                width: 100%;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            .timeline-item {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                text-align: left;
+            }
+            
+            .timeline-dot {
+                flex-shrink: 0;
+                margin: 0;
+            }
+            
+            .timeline-content {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero-motto {
+                font-size: 1.2rem;
+                padding: 12px;
+            }
+            
+            .hero-description {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+            
+            section {
+                padding: 25px 18px;
+            }
+            
+            .teacher-section {
+                padding: 25px 20px;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-link {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            h3 {
+                font-size: 20px;
+            }
+            
+            .checklist-table {
+                font-size: 14px;
+            }
+            
+            .checklist-table th,
+            .checklist-table td {
+                padding: 8px 10px;
+            }
+        }
+
+        /* Безендіру элементтері */
+        .floating-element {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(2n) {
+            animation-delay: 0.5s;
+        }
+
+        .floating-element:nth-child(3n) {
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Прогресс жолағы -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Тіл ауыстырғышы -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" id="lang-kz">ҚАЗ</button>
+        <button class="lang-btn" id="lang-ru">РУС</button>
+    </div>
+
+    <!-- Тәжірибе модалды терезесі -->
+    <div class="experience-modal" id="experienceModal">
+        <div class="experience-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h3 id="modal-title">Педагогикалық тәжірибе</h3>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Жоғарыға өту түймесі -->
+    <button class="scroll-top" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Хедер -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="were.jpg" alt="Мектеп эмблемасы" class="logo" id="logo-img">
+                <div class="school-info">
+                    <h1 id="header-title">ЖАС ҒАЛЫМ</h1>
+                    <p class="subtitle" id="header-subtitle">Талап • Ізденіс • Ғылым</p>
+                    <p class="subtitle" id="header-school">№6 Хромтау гимназиясы</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="#home" class="nav-link active">
+                <i class="fas fa-home"></i> <span id="nav-home">Басты бет</span>
+            </a>
+            <a href="#about" class="nav-link">
+                <i class="fas fa-info-circle"></i> <span id="nav-about">Клуб туралы</span>
+            </a>
+            <a href="#teachers" class="nav-link">
+                <i class="fas fa-chalkboard-teacher"></i> <span id="nav-teachers">Мұғалімдерге</span>
+            </a>
+            <a href="#achievements" class="nav-link">
+                <i class="fas fa-trophy"></i> <span id="nav-achievements">Оқушы жетістіктері</span>
+            </a>
+            <a href="#tests" class="nav-link">
+                <i class="fas fa-graduation-cap"></i> <span id="nav-tests">Білім тесттері</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Фотобекграунды бар негізгі бөлім -->
+    <div class="hero-section" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title" id="hero-title">Құрметті достар!</h1>
+            <p class="hero-subtitle" id="hero-subtitle">Біздің "Жас Ғалым" клубы сайтына қош келдіңіздер!</p>
+            
+            <div class="hero-motto" id="hero-motto">
+                "Ойдан — Жобаға, Жобадан — Дәлелге"
+            </div>
+            
+            <div class="hero-description" id="hero-description">
+                <p><strong>"Жас Ғалым"</strong> – бұл жас зерттеушілердің клубы. Біздің мақсатымыз – оқушылардың ғылыми қабілеттерін дамыту, сыни ойлауды жетілдіру және ғылымға деген қызығушылықты арттыру.</p>
+                <p>Біздің клубқа қатысу – бұл тек хобби емес. Бұл – сіздің болашағыңызға салынған инвестиция. Әрбір жоба, әрбір тәжірибе – портфолионыздың бір бөлігі.</p>
+            </div>
+            
+            <div class="teacher-section animate-fade-in-up" style="animation-delay: 0.5s">
+                <div class="teacher-content">
+                    <div class="teacher-photo-container">
+                        <img src="КЛУБЖЕТ.jpeg" alt="Клуб жетекшісі" class="teacher-photo floating-element" id="teacher-photo-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 id="teacher-title">Клуб жетекшісі</h3>
+                        <p><strong id="teacher-name">Карагулова Дамира Кереевна</strong></p>
+                        <p id="teacher-info">Тарих пәнінің мұғалімі, жоғары санаты бар маман. Оқушылардың ғылыми жобаларын дайындауда көп тәжірибесі бар.</p>
+                        <button class="experience-btn animate-pulse-slow" id="experienceBtn">
+                            <i class="fas fa-award"></i>
+                            <span id="experience-btn-text">Тәжірибесін көру</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Қалған бөлімдер -->
+    <div class="container">
+        <!-- Клуб туралы -->
+        <section id="about">
+            <h2 id="about-title">Клуб туралы</h2>
+            
+            <p id="about-description" class="animate-fade-in-up">Біздің клуб – бұл шығармашылық орта, онда әрбір оқушы өз идеяларын іске асыра алады.</p>
+            
+            <h3 id="modules-title" class="animate-slide-left">Біздің модульдер</h3>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-image-container">
+                        <img src="alesio.jpeg" alt="Талап модулі" class="module-image" id="module1-image">
+                    </div>
+                    <h4 id="module1-title">Талап</h4>
+                    <p id="module1-text">Критикалық ойлауды дамыту, пікірталас жүргізу дағдыларын қалыптастыру.</p>
+                    <p id="module1-description" style="margin-top: 10px; font-size: 14px; color: var(--gray);">
+                        <i class="fas fa-chart-line" style="color: var(--primary); margin-right: 5px;"></i>
+                        <span id="module1-desc">Оқушылар тарихи деректерді талдау арқылы өз пікірлерін дәлелдейді</span>
+                    </p>
+                </div>
+                <div class="module-card">
+                    <div class="module-image-container">
+                        <img src="atti.jpeg" alt="Ізденіс модулі" class="module-image" id="module2-image">
+                    </div>
+                    <h4 id="module2-title">Ізденіс</h4>
+                    <p id="module2-text">Дереккөздермен жұмыс, зерттеу әдістерін меңгеру, талдау дағдылары.</p>
+                    <p id="module2-description" style="margin-top: 10px; font-size: 14px; color: var(--gray);">
+                        <i class="fas fa-search" style="color: var(--secondary); margin-right: 5px;"></i>
+                        <span id="module2-desc">Жас зерттеушілер архивтер мен музейлерде деректер жинайды</span>
+                    </p>
+                </div>
+                <div class="module-card">
+                    <div class="module-image-container">
+                        <img src="pos.jpeg" alt="Ғылым модулі" class="module-image" id="module3-image">
+                    </div>
+                    <h4 id="module3-title">Ғылым</h4>
+                    <p id="module3-text">Ғылыми жоба жазу, қорғау, презентациялау дағдылары.</p>
+                    <p id="module3-description" style="margin-top: 10px; font-size: 14px; color: var(--gray);">
+                        <i class="fas fa-flask" style="color: var(--accent); margin-right: 5px;"></i>
+                        <span id="module3-desc">Оқушылар өз жобаларын ғылыми конференцияларда қорғайды</span>
+                    </p>
+                </div>
+            </div>
+
+            <h3 id="plan-title" class="animate-slide-left">Жұмыс жоспары</h3>
+            <p id="plan-description" class="animate-fade-in-up">Жылдық жоспар (34 сағат):</p>
+            
+            <div class="plan-table-container">
+                <table class="plan-table">
+                    <thead>
+                        <tr>
+                            <th id="plan-col1">№</th>
+                            <th id="plan-col2">Тақырып</th>
+                            <th id="plan-col3">Сағат</th>
+                        </tr>
+                    </thead>
+                    <tbody id="plan-content"></tbody>
+                </table>
+            </div>
+
+            <h4 id="tasks-title" class="animate-slide-left">Біздің мақсаттарымыз:</h4>
+            <ul class="tasks-list" id="tasks-list"></ul>
+        </section>
+
+        <!-- Мұғалімдерге арналған әдістемелік құрал -->
+        <section id="teachers" class="teachers-section">
+            <h2 id="teachers-title">Мұғалімдерге арналған әдістемелік құрал</h2>
+            <p id="teachers-description" class="animate-fade-in-up">«Зерттеу жолы: идеядан нәтижеге дейін» (мұғалімдерге арналған әдістемелік құрал)</p>
+            
+            <div class="methodology-content">
+                <p><strong>Құрастырған:</strong> тарих пәнінің мұғалімі Карагулова Д.К.</p>
+                <p><strong>Хромтау - 2025</strong></p>
+                
+                <p>Бұл құрал пән мұғалімдерге зерттеу жұмыстарын жүргізу барысында бағыт-бағдар беруге арналған. Бұл құралдың негізгі мақсаты – мұғалімдерге оқушылардың ғылыми-зерттеу жұмыстарын дұрыс ұйымдастыруға және сауатты жазуға әдістемелік қолдау көрсету.</p>
+                <p>Қазіргі таңда білім берудегі маңызды бағыттардың бірі – оқушылардың зерттеушілік және жобалық қабілеттерін дамыту. Оқушыны ғылыми ізденіске баулу барысында мұғалім жетекші әрі бағыттаушы рөл атқарады.</p>
+                
+                <h4>Кіріспе</h4>
+                <p>Ғылыми жобалар — оқушылардың зерттеушілік дағдыларын дамытуға, дербес ойлауына, тәжірибе жасау арқылы білімін тереңдетуге бағытталған жұмыстар. Мұғалімнің рөлі — ғылыми жобаны ұйымдастырушы, бағыттаушы және кеңесші болу.</p>
+                <p>Бүгінгі жас ұрпақ – еліміздің болашағы. Оларды ғылыми ізденіске баулу – оларды тек кәсіби маман ғана емес, сондай-ақ, қоғамға шынайы қызмет ететін адал азамат ретінде тәрбиелеудің маңызды әдісі.</p>
+                
+                <h4>Ғылыми жоба дегеніміз не?</h4>
+                <ul>
+                    <li>Қол жеткен білімдерді кеңейту және жаңа білімдер алу.</li>
+                    <li>Тәжірибелер жүргізіп, ақпараттарды талдау, зерделеу.</li>
+                </ul>
+                
+                <h4>Жұмысты неден бастау керек?</h4>
+                <ul>
+                    <li>Тақырып таңдау</li>
+                    <li>Жоспар құру</li>
+                    <li>Зерттеу күнделігін жүргізу</li>
+                    <li>Ғылыми әдебиеттермен дереккөздермен жұмыс жасау</li>
+                    <li>Жобаның қосалқы құжаттары</li>
+                    <li>Ғылыми жобаны техникалық тұрғыдан рәсімдеу</li>
+                </ul>
+                
+                <h4>Ғылыми жоба жазу кезінде кездесетін қателер:</h4>
+                <ul>
+                    <li>Ғылыми жобаның тақырыбын, бағытын, секциясын дұрыс таңдамау</li>
+                    <li>Жұмыстың құрылымын білмеу</li>
+                    <li>Ғылыми жұмыстың логикасын дұрыс түсінбеу</li>
+                    <li>«Кіріспе» бөліміне дұрыс көңіл бөлмеу</li>
+                    <li>Алдымен практикалық бөлігін жазып алып, жұмыстың теориясын соңынан жазамын деп ойлау</li>
+                    <li>Жұмыстың тек қана теориялық материалдардан тұруы немесе практикалық бөлігінің болмауы</li>
+                    <li>Ғылыми әдебиеттермен жұмыс жасаудағы қателіктер</li>
+                    <li>Зерттеу әдіс-тәсілдерін дұрыс меңгермеу</li>
+                    <li>Жобаның жазылу тілінде кететін қателер</li>
+                </ul>
+                
+                <h4>Зерттеу жұмыстарының негізгі кезеңдері:</h4>
+                <ul>
+                    <li><strong>I кезең</strong> – Тақырыпты таңдау</li>
+                    <li><strong>II кезең</strong> – Тақырыппен жұмыс жүргізу</li>
+                    <li><strong>III кезең</strong> – Тақырыпқа байланысты зерттеу жүргізу</li>
+                    <li><strong>IV кезең</strong> – Тақырыпты қорғау</li>
+                </ul>
+                
+                <h4>Ғылыми жобаның құрылымы</h4>
+                <ol>
+                    <li>Тақырып таңдау</li>
+                    <li>Мақсаты мен міндеттері</li>
+                    <li>Зерттеу нысаны мен пәні</li>
+                    <li>Зерттеу әдістері</li>
+                    <li>Жобаның жаңалығы мен практикалық мәні</li>
+                    <li>Негізгі бөлім</li>
+                    <li>Қорытынды</li>
+                    <li>Пайдаланылған әдебиеттер тізімі</li>
+                </ol>
+                
+                <h4>Мұғалімнің ролі</h4>
+                <p><strong>Мұғалімнің жетекшілік міндеттері:</strong></p>
+                <ul>
+                    <li>Тақырып таңдауда кеңес беру</li>
+                    <li>Жоспар құруға көмектесу</li>
+                    <li>Әдебиетпен жұмыс істеуге бағыт беру</li>
+                    <li>Зерттеу жүргізу әдістерін үйрету</li>
+                    <li>Уақытты дұрыс жоспарлауға үйрету</li>
+                    <li>Жұмыс нәтижесін безендіруді қадағалау</li>
+                </ul>
+                
+                <h4>Жобаны рәсімдеу талаптары</h4>
+                <ul>
+                    <li>Құжат форматы: А4, 14-кегль, Times New Roman, аралық – 1,5</li>
+                    <li>Бет саны: 15–25 бет</li>
+                    <li>График, кесте, суреттер: тиісті бөлімдерде</li>
+                </ul>
+                
+                <h4>Диагностикалық тест</h4>
+                <p><strong>Мақсаты:</strong> Оқушылардың ғылыми-зерттеушілік қабілетін, шығармашылық ойлауын, қызығушылығын анықтау.</p>
+                <p><strong>Өткізу уақыты:</strong> 15–20 минут</p>
+                <p><strong>Бағалау түрі:</strong> Жауаптарға балл беру арқылы</p>
+                
+                <h4>Жоба уақытының кестесі</h4>
+                <div class="timeline-container">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <div class="timeline-month">Мамыр</div>
+                                <div class="timeline-action">Сұраныс беру</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <div class="timeline-month">Қыркүйек</div>
+                                <div class="timeline-action">Сұранысты нақтылау</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <div class="timeline-month">Қазан</div>
+                                <div class="timeline-action">Экспертизаға тапсыру</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <div class="timeline-month">Қазан-Қараша</div>
+                                <div class="timeline-action">Облыстық қорғау, тест тапсыру</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">5</div>
+                            <div class="timeline-content">
+                                <div class="timeline-month">Ақпан-Наурыз</div>
+                                <div class="timeline-action">Республикалық қорғау</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>Тарих пәні бойынша зерттеу тақырыбын таңдауға арналған чек-лист</h4>
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Сұрақ/Талап</th>
+                            <th class="checkbox-cell">Иә</th>
+                            <th class="checkbox-cell">Жоқ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="checklist-content"></tbody>
+                </table>
+                
+                <div class="portfolio-structure">
+                    <h4>Ғылыми жобамен айналысатын оқушының портфолиосы</h4>
+                    <p><strong>1-Бөлім: Жеке мәліметтер</strong></p>
+                    <ul>
+                        <li>Оқушының аты-жөні</li>
+                        <li>Сыныбы</li>
+                        <li>Мектеп атауы</li>
+                        <li>Жетекші мұғалім</li>
+                        <li>Жобаның тақырыбы</li>
+                        <li>Жоба басталған күні</li>
+                    </ul>
+                    
+                    <p><strong>2-Бөлім: Ғылыми жобаның құрылымы</strong></p>
+                    <ul>
+                        <li>Кіріспе</li>
+                        <li>Мақсаты мен міндеттері</li>
+                        <li>Зерттеу нысаны мен пәні</li>
+                        <li>Зерттеу әдістері</li>
+                        <li>Теориялық бөлім</li>
+                        <li>Практикалық бөлім</li>
+                        <li>Нәтижелер мен қорытынды</li>
+                        <li>Пайдаланылған әдебиеттер тізімі</li>
+                        <li>Қосымшалар</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Оқушы жетістіктері -->
+        <section id="achievements">
+            <h2 id="achievements-title">Оқушы жетістіктері</h2>
+            <p id="achievements-description" class="animate-fade-in-up">Біздің оқушылардың ғылыми конкурстар мен жобалардағы жетістіктері</p>
+            
+            <div class="achievements-grid">
+                <!-- Сертификаттар болады -->
+            </div>
+        </section>
+
+        <!-- Тесттер бөлімі -->
+        <section id="tests">
+            <h2 id="tests-title">Білім тесттері</h2>
+            <p id="tests-description" class="animate-fade-in-up">Тарих пәні бойынша біліміңізді тексеріңіз</p>
+            
+            <div class="class-selector">
+                <button class="class-btn active" data-class="9">9 сынып</button>
+                <button class="class-btn" data-class="10">10 сынып</button>
+                <button class="class-btn" data-class="11">11 сынып</button>
+            </div>
+
+            <!-- 9 сынып тесті -->
+            <div class="test-container active" id="test-9">
+                <h3 id="test9-title">9 сынып тарих тесті</h3>
+                <div id="test9-questions"></div>
+                
+                <div class="test-controls">
+                    <button class="test-btn secondary" id="reset-test-9">
+                        <i class="fas fa-redo"></i>
+                        <span id="reset-btn-text">Қайта бастау</span>
+                    </button>
+                    <button class="test-btn" id="submit-test-9">
+                        <i class="fas fa-check-circle"></i>
+                        <span id="submit-btn-text">Тестті аяқтау</span>
+                    </button>
+                </div>
+
+                <div class="diagnostic-container" id="diagnostic-9" style="display: none;">
+                    <h3 id="diagnostic-title">Диагностика нәтижесі</h3>
+                    <div class="diagnostic-chart">
+                        <div class="chart-bar">
+                            <div class="chart-label" id="level1-label">1 деңгей</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar-fill" id="level1-fill" style="width: 0%">0%</div>
+                            </div>
+                            <div class="chart-percentage" id="level1-percentage">0%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label" id="level2-label">2 деңгей</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar-fill" id="level2-fill" style="width: 0%">0%</div>
+                            </div>
+                            <div class="chart-percentage" id="level2-percentage">0%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label" id="level3-label">3 деңгей</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar-fill" id="level3-fill" style="width: 0%">0%</div>
+                            </div>
+                            <div class="chart-percentage" id="level3-percentage">0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-summary">
+                        <div class="result-item">
+                            <span id="total-questions-text">Барлық сұрақтар:</span>
+                            <span id="total-questions-value">0</span>
+                        </div>
+                        <div class="result-item">
+                            <span id="correct-answers-text">Дұрыс жауаптар:</span>
+                            <span id="correct-answers-value">0</span>
+                        </div>
+                        <div class="result-item">
+                            <span id="incorrect-answers-text">Қате жауаптар:</span>
+                            <span id="incorrect-answers-value">0</span>
+                        </div>
+                        <div class="result-item">
+                            <span id="percentage-text">Жалпы нәтиже:</span>
+                            <span id="percentage-value">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10 сынып тесті -->
+            <div class="test-container" id="test-10">
+                <h3 id="test10-title">10 сынып тарих тесті</h3>
+                <div id="test10-questions"></div>
+                
+                <div class="test-controls">
+                    <button class="test-btn secondary" id="reset-test-10">
+                        <i class="fas fa-redo"></i>
+                        <span>Қайта бастау</span>
+                    </button>
+                    <button class="test-btn" id="submit-test-10">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Тестті аяқтау</span>
+                    </button>
+                </div>
+
+                <div class="diagnostic-container" id="diagnostic-10" style="display: none;">
+                    <h3>Диагностика нәтижесі</h3>
+                    <div class="diagnostic-chart">
+                        <div class="chart-bar">
+                            <div class="chart-label">1 деңгей</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar-fill" style="width: 0%">0%</div>
+                            </div>
+                            <div class="chart-percentage">0%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label">2 деңгей</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar-fill" style="width: 0%">0%</div>
+                            </div>
+                            <div class="chart-percentage">0%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label">3 деңгей</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar-fill" style="width: 0%">0%</div>
+                            </div>
+                            <div class="chart-percentage">0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-summary">
+                        <div class="result-item">
+                            <span>Барлық сұрақтар:</span>
+                            <span>0</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Дұрыс жауаптар:</span>
+                            <span>0</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Қате жауаптар:</span>
+                            <span>0</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Жалпы нәтиже:</span>
+                            <span>0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11 сынып тесті -->
+            <div class="test-container" id="test-11">
+                <h3 id="test11-title">11 сынып тарих тесті</h3>
+                <div id="test11-questions"></div>
+                
+                <div class="test-controls">
+                    <button class="test-btn secondary" id="reset-test-11">
+                        <i class="fas fa-redo"></i>
+                        <span>Қайта бастау</span>
+                    </button>
+                    <button class="test-btn" id="submit-test-11">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Тестті аяқтау</span>
+                    </button>
+                </div>
+
+                <div class="diagnostic-container" id="diagnostic-11" style="display: none;">
+                    <h3>Диагностика нәтижесі</h3>
+                    <div class="diagnostic-chart">
+                        <div class="chart-bar">
+                            <div class="chart-label">1 деңгей</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar-fill" style="width: 0%">0%</div>
+                            </div>
+                            <div class="chart-percentage">0%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label">2 деңгей</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar-fill" style="width: 0%">0%</div>
+                            </div>
+                            <div class="chart-percentage">0%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label">3 деңгей</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar-fill" style="width: 0%">0%</div>
+                            </div>
+                            <div class="chart-percentage">0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-summary">
+                        <div class="result-item">
+                            <span>Барлық сұрақтар:</span>
+                            <span>0</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Дұрыс жауаптар:</span>
+                            <span>0</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Қате жауаптар:</span>
+                            <span>0</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Жалпы нәтиже:</span>
+                            <span>0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Аяқталу бөлімі -->
+    <footer>
+        <div class="footer-content">
+            <h3 id="footer-title">Жас Ғалым</h3>
+            <p id="footer-description">Жас зерттеушілер клубы</p>
+            <p id="footer-school">№6 Хромтау гимназиясы</p>
+            
+            <div class="footer-links">
+                <a href="#home" class="footer-link floating-element">
+                    <i class="fas fa-home"></i> <span id="footer-home">Басты бет</span>
+                </a>
+                <a href="#about" class="footer-link floating-element" style="animation-delay: 0.2s">
+                    <i class="fas fa-info-circle"></i> <span id="footer-about">Клуб туралы</span>
+                </a>
+                <a href="#teachers" class="footer-link floating-element" style="animation-delay: 0.4s">
+                    <i class="fas fa-chalkboard-teacher"></i> <span id="footer-teachers">Мұғалімдерге</span>
+                </a>
+                <a href="#achievements" class="footer-link floating-element" style="animation-delay: 0.6s">
+                    <i class="fas fa-trophy"></i> <span id="footer-achievements">Жетістіктер</span>
+                </a>
+                <a href="#tests" class="footer-link floating-element" style="animation-delay: 0.8s">
+                    <i class="fas fa-graduation-cap"></i> <span id="footer-tests">Тесттер</span>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 Жас Ғалым клубы</p>
+                <p id="footer-note">Барлық құқықтар қорғалған</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Екі тілдегі мазмұн
+        const content = {
+            kz: {
+                header: {
+                    title: "ЖАС ҒАЛЫМ",
+                    subtitle: "Талап • Ізденіс • Ғылым",
+                    school: "№6 Хромтау гимназиясы"
+                },
+                nav: {
+                    home: "Басты бет",
+                    about: "Клуб туралы",
+                    teachers: "Мұғалімдерге",
+                    achievements: "Оқушы жетістіктері",
+                    tests: "Білім тесттері"
+                },
+                hero: {
+                    title: "Құрметті достар!",
+                    subtitle: "Біздің \"Жас Ғалым\" клубы сайтына қош келдіңіздер!",
+                    motto: "\"Ойдан — Жобаға, Жобадан — Дәлелге\"",
+                    description: "\"Жас Ғалым\" – бұл жас зерттеушілердің клубы. Біздің мақсатымыз – оқушылардың ғылыми қабілеттерін дамыту, сыни ойлауды жетілдіру және ғылымға деген қызығушылықты арттыру.\n\nБіздің клубқа қатысу – бұл тек хобби емес. Бұл – сіздің болашағыңызға салынған инвестиция. Әрбір жоба, әрбір тәжірибе – портфолионыздың бір бөлігі.",
+                    teacherTitle: "Клуб жетекшісі",
+                    teacherName: "Карагулова Дамира Кереевна",
+                    teacherInfo: "Тарих пәнінің мұғалімі, жоғары санаты бар маман. Оқушылардың ғылыми жобаларын дайындауда көп тәжірибесі бар."
+                },
+                about: {
+                    title: "Клуб туралы",
+                    description: "Біздің клуб – бұл шығармашылық орта, онда әрбір оқушы өз идеяларын іске асыра алады.",
+                    modulesTitle: "Біздің модульдер",
+                    module1Title: "Талап",
+                    module1Text: "Критикалық ойлауды дамыту, пікірталас жүргізу дағдыларын қалыптастыру.",
+                    module1Desc: "Оқушылар тарихи деректерді талдау арқылы өз пікірлерін дәлелдейді",
+                    module2Title: "Ізденіс",
+                    module2Text: "Дереккөздермен жұмыс, зерттеу әдістерін меңгеру, талдау дағдылары.",
+                    module2Desc: "Жас зерттеушілер архивтер мен музейлерде деректер жинайды",
+                    module3Title: "Ғылым",
+                    module3Text: "Ғылыми жоба жазу, қорғау, презентациялау дағдылары.",
+                    module3Desc: "Оқушылар өз жобаларын ғылыми конференцияларда қорғайды",
+                    planTitle: "Жұмыс жоспары",
+                    planDescription: "Жылдық жоспар (34 сағат):",
+                    planCol1: "№",
+                    planCol2: "Тақырып",
+                    planCol3: "Сағат",
+                    plan: [
+                        { quarter: "І тоқсан (8 сағат)" },
+                        { num: "1", topic: "Клубпен танысу", hours: "1" },
+                        { num: "2", topic: "Ғылым негіздері", hours: "1" },
+                        { num: "3", topic: "Жоба құрылымы", hours: "2" },
+                        { num: "4", topic: "Тақырып таңдау", hours: "2" },
+                        { num: "5", topic: "Ғылыми этика", hours: "1" },
+                        { num: "6", topic: "Қорытынды", hours: "1" },
+                        { quarter: "ІІ тоқсан (8 сағат)" },
+                        { num: "7", topic: "Ақпарат іздеу", hours: "2" },
+                        { num: "8", topic: "Дереккөздермен жұмыс", hours: "2" },
+                        { num: "9", topic: "Гипотеза құру", hours: "2" },
+                        { num: "10", topic: "Зерттеу әдістері", hours: "1" },
+                        { num: "11", topic: "Қорытынды", hours: "1" },
+                        { quarter: "ІІІ тоқсан (10 сағат)" },
+                        { num: "12", topic: "Эксперимент жүргізу", hours: "2" },
+                        { num: "13", topic: "Деректер жинау", hours: "2" },
+                        { num: "14", topic: "Талдау", hours: "2" },
+                        { num: "15", topic: "Жоба жазу", hours: "2" },
+                        { num: "16", topic: "Түзетулер", hours: "1" },
+                        { num: "17", topic: "Қорытынды", hours: "1" },
+                        { quarter: "ІV тоқсан (8 сағат)" },
+                        { num: "18", topic: "Рәсімдеу", hours: "2" },
+                        { num: "19", topic: "Презентация", hours: "2" },
+                        { num: "20", topic: "Қорғауға дайындық", hours: "1" },
+                        { num: "21", topic: "Ішкі қорғау", hours: "1" },
+                        { num: "22", topic: "Жылдық қорытынды", hours: "2" }
+                    ],
+                    tasksTitle: "Біздің мақсаттарымыз:",
+                    tasks: [
+                        "Ғылыми әлеуетті ашу",
+                        "Сыни ойлауды дамыту",
+                        "Өз бетінше ізденуді үйрету",
+                        "Дәлел келтіруді меңгерту",
+                        "Ғылымға қызығушылықты ояту",
+                        "Жоба жасауға дайындау",
+                        "Бәсекелерге қатысуға даярлау"
+                    ]
+                },
+                teachers: {
+                    title: "Мұғалімдерге арналған әдістемелік құрал",
+                    description: "«Зерттеу жолы: идеядан нәтижеге дейін» (мұғалімдерге арналған әдістемелік құрал)",
+                    checklist: [
+                        "Бұл тақырып мені (немесе оқушыны) шын мәнінде қызықтырады ма?",
+                        "Тақырып тарих пәніне нақты қатысты ма?",
+                        "Бұл тақырып белгілі бір тарихи кезеңді, оқиғаны немесе тұлғаны қамти ма?",
+                        "Тақырып бойынша сенімді ақпарат көздері (кітаптар, мұрағаттар, деректер) бар ма?",
+                        "Тақырып тым кең емес пе (мысалы, «XX ғасырдағы соғыстар»)?",
+                        "Тақырып тым тар емес пе (мысалы, «1932 жылғы наурыздың 5-індегі оқиға»)?",
+                        "Зерттеу сұрағын қоюға бола ма (мысалы, «Неліктен...?», «Қалай әсер етті?»)?",
+                        "Тақырып бойынша өзіндік пікір айтуға мүмкіндік бар ма?",
+                        "Бұл тақырып оқулық аясынан тыс ізденуді қажет ете ме?",
+                        "Бұл тақырып қазіргі заманмен байланыстыруға бола ма?",
+                        "Тақырып мектеп бағдарламасына сай келе ме?",
+                        "Бұл тақырыпты 7–10 беттік зерттеу жұмысы көлемінде қамтуға бола ма?"
+                    ]
+                },
+                achievements: {
+                    title: "Оқушы жетістіктері",
+                    description: "Біздің оқушылардың ғылыми конкурстар мен жобалардағы жетістіктері"
+                },
+                tests: {
+                    title: "Білім тесттері",
+                    description: "Тарих пәні бойынша біліміңізді тексеріңіз",
+                    test9Title: "9 сынып тарих тесті",
+                    test10Title: "10 сынып тарих тесті",
+                    test11Title: "11 сынып тарих тесті",
+                    resetBtnText: "Қайта бастау",
+                    submitBtnText: "Тестті аяқтау",
+                    diagnosticTitle: "Диагностика нәтижесі",
+                    level1Label: "1 деңгей",
+                    level2Label: "2 деңгей",
+                    level3Label: "3 деңгей",
+                    totalQuestionsText: "Барлық сұрақтар:",
+                    correctAnswersText: "Дұрыс жауаптар:",
+                    incorrectAnswersText: "Қате жауаптар:",
+                    percentageText: "Жалпы нәтиже:"
+                },
+                footer: {
+                    title: "Жас Ғалым",
+                    description: "Жас зерттеушілер клубы",
+                    school: "№6 Хромтау гимназиясы",
+                    home: "Басты бет",
+                    about: "Клуб туралы",
+                    teachers: "Мұғалімдерге",
+                    achievements: "Жетістіктер",
+                    tests: "Тесттер",
+                    note: "Барлық құқықтар қорғалған"
+                },
+                experience: {
+                    btnText: "Тәжірибесін көру",
+                    modalTitle: "Педагогикалық тәжірибе",
+                    content: `
+                        <h4 style="margin-bottom: 15px;">Карагулова Дамира Кереевна</h4>
+                        <p style="margin-bottom: 8px;"><strong>Жалпы педагогикалық стажы:</strong> 22 жыл</p>
+                        <p style="margin-bottom: 8px;"><strong>Мамандығы:</strong> Тарих пәні мұғалімі,Педагог-зерттеуші</p>
+                        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee;">
+                            <p style="margin-bottom: 10px;"><strong>Ғылыми жетістіктері:</strong></p>
+                            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                                <li style="margin-bottom: 5px;">Халықаралық конференцияларға дайындаған оқушылар</li>
+                                <li style="margin-bottom: 5px;">Ғылыми жобалар бойынша 20+ жеңімпаз</li>
+                                <li>Педагогикалық зерттеулердің авторы</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee;">
+                            <p style="margin-bottom: 10px;"><strong>Мамандықтық дағдылары:</strong></p>
+                            <ul style="margin-left: 20px;">
+                                <li style="margin-bottom: 5px;">Ғылыми жобалар жазу әдістемесі</li>
+                                <li style="margin-bottom: 5px;">Зерттеу әдістерін оқыту</li>
+                                <li style="margin-bottom: 5px;">Презентация дағдыларын дамыту</li>
+                                <li>Сыни ойлауды қалыптастыру</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            ru: {
+                header: {
+                    title: "ЖАС ҒАЛЫМ",
+                    subtitle: "Требование • Поиск • Наука",
+                    school: "Гимназия №6 г. Хромтау"
+                },
+                nav: {
+                    home: "Главная",
+                    about: "О клубе",
+                    teachers: "Учителям",
+                    achievements: "Достижения учеников",
+                    tests: "Тесты знаний"
+                },
+                hero: {
+                    title: "Уважаемые друзья!",
+                    subtitle: "Добро пожаловать на сайт клуба \"Жас Ғалым\"!",
+                    motto: "\"От Идеи — к Проекту, от Проекта — к Доказательству\"",
+                    description: "\"Жас Ғалым\" – это клуб юных исследователей. Наша цель – развитие научных способностей учащихся, совершенствование критического мышления и повышение интереса к науке.\n\nУчастие в нашем клубе – это не просто хобби. Это – инвестиция в ваше будущее. Каждый проект, каждый опыт – часть вашего портфолио.",
+                    teacherTitle: "Руководитель клуба",
+                    teacherName: "Карагулова Дамира Кереевна",
+                    teacherInfo: "Учитель истории, специалист высшей категории. Имеет большой опыт в подготовке научных проектов учащихся."
+                },
+                about: {
+                    title: "О клубе",
+                    description: "Наш клуб – это творческая среда, где каждый ученик может реализовать свои идеи.",
+                    modulesTitle: "Наши модули",
+                    module1Title: "Требование",
+                    module1Text: "Развитие критического мышления, формирование навыков ведения дискуссий.",
+                    module1Desc: "Учащиеся анализируют исторические данные и аргументируют свои позиции",
+                    module2Title: "Поиск",
+                    module2Text: "Работа с источниками, освоение методов исследования, навыки анализа.",
+                    module2Desc: "Юные исследователи собирают данные в архивах и музеях",
+                    module3Title: "Наука",
+                    module3Text: "Написание научных проектов, защита, навыки презентации.",
+                    module3Desc: "Учащиеся защищают свои проекты на научных конференциях",
+                    planTitle: "План работы",
+                    planDescription: "Годовой план (34 часа):",
+                    planCol1: "№",
+                    planCol2: "Тема",
+                    planCol3: "Часы",
+                    plan: [
+                        { quarter: "I четверть (8 часов)" },
+                        { num: "1", topic: "Знакомство с клубом", hours: "1" },
+                        { num: "2", topic: "Основы науки", hours: "1" },
+                        { num: "3", topic: "Структура проекта", hours: "2" },
+                        { num: "4", topic: "Выбор темы", hours: "2" },
+                        { num: "5", topic: "Научная этика", hours: "1" },
+                        { num: "6", topic: "Итог", hours: "1" },
+                        { quarter: "II четверть (8 часов)" },
+                        { num: "7", topic: "Поиск информации", hours: "2" },
+                        { num: "8", topic: "Работа с источниками", hours: "2" },
+                        { num: "9", topic: "Формулирование гипотезы", hours: "2" },
+                        { num: "10", topic: "Методы исследования", hours: "1" },
+                        { num: "11", topic: "Итог", hours: "1" },
+                        { quarter: "III четверть (10 часов)" },
+                        { num: "12", topic: "Проведение эксперимента", hours: "2" },
+                        { num: "13", topic: "Сбор данных", hours: "2" },
+                        { num: "14", topic: "Анализ", hours: "2" },
+                        { num: "15", topic: "Написание проекта", hours: "2" },
+                        { num: "16", topic: "Корректировка", hours: "1" },
+                        { num: "17", topic: "Итог", hours: "1" },
+                        { quarter: "IV четверть (8 часов)" },
+                        { num: "18", topic: "Оформление", hours: "2" },
+                        { num: "19", topic: "Презентация", hours: "2" },
+                        { num: "20", topic: "Подготовка к защите", hours: "1" },
+                        { num: "21", topic: "Внутренняя защита", hours: "1" },
+                        { num: "22", topic: "Годовой итог", hours: "2" }
+                    ],
+                    tasksTitle: "Наши цели:",
+                    tasks: [
+                        "Раскрытие научного потенциала",
+                        "Развитие критического мышления",
+                        "Обучение самостоятельному поиску",
+                        "Обучение аргументации",
+                        "Пробуждение интереса к науке",
+                        "Подготовка к созданию проектов",
+                        "Подготовка к участию в конкурсах"
+                    ]
+                },
+                teachers: {
+                    title: "Методическое пособие для учителей",
+                    description: "«Путь исследования: от идеи к результату» (методическое пособие для учителей)",
+                    checklist: [
+                        "Эта тема действительно интересует меня (или ученика)?",
+                        "Тема непосредственно связана с предметом истории?",
+                        "Эта тема охватывает определенный исторический период, событие или личность?",
+                        "Есть ли надежные источники информации (книги, архивы, данные) по этой теме?",
+                        "Тема не слишком широка (например, «Войны XX века»)?",
+                        "Тема не слишком узка (например, «Событие 5 марта 1932 года»)?",
+                        "Можно ли поставить исследовательский вопрос (например, «Почему...?», «Как повлияло?»)?",
+                        "Есть ли возможность высказать собственное мнение по теме?",
+                        "Тема требует поиска за пределами учебника?",
+                        "Можно ли связать эту тему с современностью?",
+                        "Тема соответствует школьной программе?",
+                        "Можно ли охватить эту тему в объеме 7–10 страниц исследовательской работы?"
+                    ]
+                },
+                achievements: {
+                    title: "Достижения учеников",
+                    description: "Достижения наших учеников в научных конкурсах и проектах"
+                },
+                tests: {
+                    title: "Тесты знаний",
+                    description: "Проверьте свои знания по предмету история",
+                    test9Title: "Тест по истории 9 класс",
+                    test10Title: "Тест по истории 10 класс",
+                    test11Title: "Тест по истории 11 класс",
+                    resetBtnText: "Начать заново",
+                    submitBtnText: "Завершить тест",
+                    diagnosticTitle: "Результаты диагностики",
+                    level1Label: "1 уровень",
+                    level2Label: "2 уровень",
+                    level3Label: "3 уровень",
+                    totalQuestionsText: "Всего вопросов:",
+                    correctAnswersText: "Правильных ответов:",
+                    incorrectAnswersText: "Неправильных ответов:",
+                    percentageText: "Общий результат:"
+                },
+                footer: {
+                    title: "Жас Ғалым",
+                    description: "Клуб юных исследователей",
+                    school: "Гимназия №6 г. Хромтау",
+                    home: "Главная",
+                    about: "О клубе",
+                    teachers: "Учителям",
+                    achievements: "Достижения",
+                    tests: "Тесты",
+                    note: "Все права защищены"
+                },
+                experience: {
+                    btnText: "Посмотреть опыт",
+                    modalTitle: "Педагогический опыт",
+                    content: `
+                        <h4 style="margin-bottom: 15px;">Карагулова Дамира Кереевна</h4>
+                        <p style="margin-bottom: 8px;"><strong>Общий педагогический стаж:</strong> 22 года</p>
+                        <p style="margin-bottom: 8px;"><strong>Специальность:</strong> Учитель истории,Педагог-исследователь</p>
+                        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee;">
+                            <p style="margin-bottom: 10px;"><strong>Научные достижения:</strong></p>
+                            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                                <li style="margin-bottom: 5px;">Подготовила учащихся к международным конференциям</li>
+                                <li style="margin-bottom: 5px;">Более 20+ победителей научных проектов</li>
+                                <li>Автор педагогических исследований</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee;">
+                            <p style="margin-bottom: 10px;"><strong>Профессиональные навыки:</strong></p>
+                            <ul style="margin-left: 20px;">
+                                <li style="margin-bottom: 5px;">Методика написания научных проектов</li>
+                                <li style="margin-bottom: 5px;">Обучение исследовательским методам</li>
+                                <li style="margin-bottom: 5px;">Развитие презентационных навыков</li>
+                                <li>Формирование критического мышления</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            }
+        };
+
+        // БАРЛЫҚ ТЕСТ СҰРАҚТАРЫ
+        const testQuestions = {
+            "9": {
+                questions: [
+                    { 
+                        id: 1, 
+                        text: "Үйғыр, дүнген, қырғыз, өзбек бірге қатысқан аймақ:", 
+                        options: [
+                            "A) Торғай облысы", 
+                            "B) Жетісу облысы", 
+                            "C) Ақмола облысы", 
+                            "D) Орал облысы", 
+                            "E) Семей облысы"
+                        ], 
+                        correct: "B) Жетісу облысы", 
+                        level: 1 
+                    },
+                    { 
+                        id: 2, 
+                        text: "1916 жылғы көтеріліске қатысушыларды ақтау, көтерілістен зардап шеккен аудандарға көмек көрсету, әскерге алынғандарды қайтару туралы шешім қабылданды:", 
+                        options: [
+                            "A) қазан төңкерісінен кейін", 
+                            "B) ұжымдастыру жылдарында", 
+                            "C) ақпан төңкерісінен кейін", 
+                            "D) азамат соғысынан кейін", 
+                            "E) ЖЭС жылдарында"
+                        ], 
+                        correct: "C) ақпан төңкерісінен кейін", 
+                        level: 1 
+                    },
+                    { 
+                        id: 3, 
+                        text: "«Әскери коммунизм» экономикалық саясаты қолданылған мерзім:", 
+                        options: [
+                            "A) қазан төңкерісі жылдарында", 
+                            "B) ақпан төңкерісі жылдарында", 
+                            "C) азамат соғысы жылдарында", 
+                            "D) индустрияландыру жылдарында", 
+                            "E) ұжымдастыру жылдарында"
+                        ], 
+                        correct: "C) азамат соғысы жылдарында", 
+                        level: 1 
+                    },
+                    { 
+                        id: 4, 
+                        text: "ЖЭС-пен енгізілген іс-шаралар тізімінен қате ақпаратты табыңыз:", 
+                        options: [
+                            "A) жерді жалға беру", 
+                            "B) азық-түлік салғырты", 
+                            "C) жалдамалы еңбекті пайдалану", 
+                            "D) ызық-түлік салығы", 
+                            "E) жеке меншікті енгізу"
+                        ], 
+                        correct: "D) ызық-түлік салығы", 
+                        level: 1 
+                    },
+                    { 
+                        id: 5, 
+                        text: "XVIII ғ.соңы мен XIX ғ.басында әлсірей бастаған Цин империясына отарлық әрекетін күшейткен.", 
+                        options: [
+                            "A) АҚШ", 
+                            "B) Ұлыбритания", 
+                            "C) Франция", 
+                            "D) Ресей", 
+                            "E) Жапония"
+                        ], 
+                        correct: "B) Ұлыбритания", 
+                        level: 1 
+                    },
+                    { 
+                        id: 6, 
+                        text: "КСРО қай жылы Ауғанстанға басып кірді?", 
+                        options: [
+                            "A) 1978 ж.", 
+                            "B) 1979 ж.", 
+                            "C) 1980 ж.", 
+                            "D) 1981 ж.", 
+                            "E) 1982 ж."
+                        ], 
+                        correct: "B) 1979 ж.", 
+                        level: 1 
+                    },
+                    { 
+                        id: 7, 
+                        text: "Франция-Пруссия соғысының шешуші шайқасы өткен орын.", 
+                        options: [
+                            "A) Седан", 
+                            "B) Верден", 
+                            "C) Марна", 
+                            "D) Ватерлоо", 
+                            "E) Лейпциг"
+                        ], 
+                        correct: "A) Седан", 
+                        level: 1 
+                    },
+                    { 
+                        id: 8, 
+                        text: "Отто фон Бисмарктің лақап аты.", 
+                        options: [
+                            "A) Темір канцлер", 
+                            "B) Болат канцлер", 
+                            "C) Темір Отто", 
+                            "D) Темір Бисмарк", 
+                            "E) Болат Отто"
+                        ], 
+                        correct: "A) Темір канцлер", 
+                        level: 1 
+                    },
+                    { 
+                        id: 9, 
+                        text: "Пруссияның герман жерлерін біріктірудегі ең басты қарсыласы:", 
+                        options: [
+                            "A) Англия", 
+                            "B) Австрия", 
+                            "C) Франция", 
+                            "D) Ресей", 
+                            "E) Италия"
+                        ], 
+                        correct: "B) Австрия", 
+                        level: 1 
+                    },
+                    { 
+                        id: 10, 
+                        text: "Герман императорының титулы.", 
+                        options: [
+                            "A) Кайзер", 
+                            "B) Шахиншах", 
+                            "C) Падишах", 
+                            "D) Император", 
+                            "E) Царь"
+                        ], 
+                        correct: "A) Кайзер", 
+                        level: 1 
+                    },
+                    { 
+                        id: 11, 
+                        text: "Кариб дағдарысы қай жылы орын алды?", 
+                        options: [
+                            "A) 1960 ж.", 
+                            "B) 1961 ж.", 
+                            "C) 1962 ж.", 
+                            "D) 1963 ж.", 
+                            "E) 1964 ж."
+                        ], 
+                        correct: "C) 1962 ж.", 
+                        level: 1 
+                    },
+                    { 
+                        id: 12, 
+                        text: "БҰҰ жарғысы қай жылы өз күшіне енді?", 
+                        options: [
+                            "A) 1944 ж.", 
+                            "B) 1945 ж.", 
+                            "C) 1946 ж.", 
+                            "D) 1947 ж.", 
+                            "E) 1948 ж."
+                        ], 
+                        correct: "B) 1945 ж.", 
+                        level: 1 
+                    },
+                    { 
+                        id: 13, 
+                        text: "ХХ ғ. басындағы түркі халықтарын біріктіруді мақсат еткен саяси қозғалыс:", 
+                        options: [
+                            "A) Пантүркизм", 
+                            "B) Панславизм", 
+                            "C) Пангерманизм", 
+                            "D) Панисламизм", 
+                            "E) Панмонголизм"
+                        ], 
+                        correct: "A) Пантүркизм", 
+                        level: 1 
+                    },
+                    { 
+                        id: 14, 
+                        text: "Қарқаралы петициясы қабылданды:", 
+                        options: [
+                            "A) 1905 ж.", 
+                            "B) 1907 ж.", 
+                            "C) 1910 ж.", 
+                            "D) 1913 ж.", 
+                            "E) 1916 ж."
+                        ], 
+                        correct: "A) 1905 ж.", 
+                        level: 1 
+                    },
+                    { 
+                        id: 15, 
+                        text: "ХХ ғ. басында Ресей мен Қазақстанда аграрлық реформа жүргізген саясаткер:", 
+                        options: [
+                            "A) С.Ю. Витте", 
+                            "B) П.А. Столыпин", 
+                            "C) А.Ф. Керенский", 
+                            "D) В.И. Ленин", 
+                            "E) Николай II"
+                        ], 
+                        correct: "B) П.А. Столыпин", 
+                        level: 1 
+                    }
+                ]
+            },
+            "10": {
+                questions: [
+                    { 
+                        id: 1, 
+                        text: "Үндістан өз тәуелсіздігін қашан жариялады?", 
+                        options: [
+                            "А) 1947 тамыз", 
+                            "B) 1948 тамыз", 
+                            "С) 1949 тамыз", 
+                            "D) 1950 тамыз", 
+                            "Е) 1951 тамыз"
+                        ], 
+                        correct: "А) 1947 тамыз", 
+                        level: 1 
+                    },
+                    { 
+                        id: 2, 
+                        text: "Үндістанның алғашқы премьер министрі?", 
+                        options: [
+                            "А) М. Ганди", 
+                            "В) Дж. Неру", 
+                            "С) Р. Ганди", 
+                            "D) С. Хан", 
+                            "Е) Джинна"
+                        ], 
+                        correct: "В) Дж. Неру", 
+                        level: 1 
+                    },
+                    { 
+                        id: 3, 
+                        text: "Қырғиқабақ соғыстың басталуына себеп болған баяндама.", 
+                        options: [
+                            "А) У. Черчилль, Фултон", 
+                            "В) Ф. Рузвельт, Вашингтон", 
+                            "С) И. Сталин, Ялта", 
+                            "D) Ш. Де Голль, Париж", 
+                            "Е) М. Цзедунь, Нанкин"
+                        ], 
+                        correct: "А) У. Черчилль, Фултон", 
+                        level: 1 
+                    },
+                    { 
+                        id: 4, 
+                        text: "АҚШ-тың Екінші дүниежүзілік соғыстан кейн Еуропа елдеріне көмек көрсету бағдарламасы:", 
+                        options: [
+                            "А) «Рузвельт доктринасы»", 
+                            "В) «Жаңа бағыт»", 
+                            "С) «Ренди»", 
+                            "D) «Маршалл жоспары»", 
+                            "Е) «Лендлиз»"
+                        ], 
+                        correct: "D) «Маршалл жоспары»", 
+                        level: 1 
+                    },
+                    { 
+                        id: 5, 
+                        text: "АҚШ – та Ф. Рузвельттан кейін билікке келген президент.", 
+                        options: [
+                            "А) Г. Труман", 
+                            "В) А. Маршалл", 
+                            "С) А. Смит", 
+                            "D) Д. Эйзенхауер", 
+                            "Е) Л. Джонсон"
+                        ], 
+                        correct: "А) Г. Труман", 
+                        level: 1 
+                    },
+                    { 
+                        id: 6, 
+                        text: "Достық, ынтымақтастық және өзара көмек Варшава шартына қай жылы қол қойылды?", 
+                        options: [
+                            "A) 1950 ж.", 
+                            "B) 1951 ж.", 
+                            "C) 1953 ж.", 
+                            "D) 1955 ж.", 
+                            "E) 1957 ж."
+                        ], 
+                        correct: "D) 1955 ж.", 
+                        level: 1 
+                    },
+                    { 
+                        id: 7, 
+                        text: "1949 жылы қыркүйекте Германия Федеративтік Республикасының үкімет басшысы болып тағайындалды:", 
+                        options: [
+                            "A) Л. Эрхард", 
+                            "B) К. Аденауэр", 
+                            "C) Ф. Шуманн", 
+                            "D) О. Гротеволь", 
+                            "E) Ш. Де Голль"
+                        ], 
+                        correct: "B) К. Аденауэр", 
+                        level: 1 
+                    },
+                    { 
+                        id: 8, 
+                        text: "Қытайда кең көлемдегі экономикалық реформалар қабылдаған мемлекет қайраткері?", 
+                        options: [
+                            "А) Ц. Цзямин", 
+                            "В) Л. Сибао", 
+                            "С) К. Тэньки", 
+                            "D) Д. Сяопин", 
+                            "Е) Х. Цзиньтао"
+                        ], 
+                        correct: "D) Д. Сяопин", 
+                        level: 1 
+                    },
+                    { 
+                        id: 9, 
+                        text: "Орталық Азияға кірмейтін мемлекетті атаңыз:", 
+                        options: [
+                            "A) Қазақстан", 
+                            "B) Пәкістан", 
+                            "C) Өзбекстан", 
+                            "D) Қырғызстан", 
+                            "E) Тәжікстан"
+                        ], 
+                        correct: "B) Пәкістан", 
+                        level: 1 
+                    },
+                    { 
+                        id: 10, 
+                        text: "А. Македонский жорықтары жайлы мәлімет кездесетін Үлкен Плинийдің еңбегін атаңыз:", 
+                        options: [
+                            "A) «Тарих»", 
+                            "B) «География»", 
+                            "C) «Авеста»", 
+                            "D) «Жаратылыстану тарихы»", 
+                            "E) «Асыл тастар»"
+                        ], 
+                        correct: "D) «Жаратылыстану тарихы»", 
+                        level: 1 
+                    },
+                    { 
+                        id: 11, 
+                        text: "2004 жылы ЮНЕСКО-ның Дүниежүзілік мәдени мұралар тізіміне енген ескерткіш:", 
+                        options: [
+                            "A) Берел қорымы", 
+                            "B) Тамғалы петроглифі", 
+                            "C) Ботай қонысы", 
+                            "D) Тасмола ескерткіші", 
+                            "E) Бесшатыр қорғаны"
+                        ], 
+                        correct: "B) Тамғалы петроглифі", 
+                        level: 1 
+                    },
+                    { 
+                        id: 12, 
+                        text: "Орта Азияның ежелгі тоғыз өркениетінің бірі Соғды өркениетінің қамтыған аумағы:", 
+                        options: [
+                            "A) Мұрғаб жазирасы", 
+                            "B) Сырдария мен Әмударияның арасы", 
+                            "C) Шыршық пен Ангрен өзендері алқабы", 
+                            "D) Балқаш көлі пен Ыстықкөлдің арасы", 
+                            "E) Тянь-Шань тауы"
+                        ], 
+                        correct: "C) Шыршық пен Ангрен өзендері алқабы", 
+                        level: 1 
+                    },
+                    { 
+                        id: 13, 
+                        text: "Сақтар жайлы баяндалатын Бехустин шатқалындағы жазудың бастамашысы болған парсы билеушісі:", 
+                        options: [
+                            "A) Дарий І", 
+                            "B) Кир", 
+                            "C) Дарий ІІ", 
+                            "D) Скунха", 
+                            "E) Ксеркс"
+                        ], 
+                        correct: "A) Дарий І", 
+                        level: 1 
+                    },
+                    { 
+                        id: 14, 
+                        text: "«Этноним» терминінің анықтамасын табыңыз:", 
+                        options: [
+                            "A) халықтың сипаттамасы", 
+                            "B) жер аттары", 
+                            "C) халықтардың араласуы", 
+                            "D) халықтың атауы", 
+                            "E) ұлттың қалыптасуы"
+                        ], 
+                        correct: "D) халықтың атауы", 
+                        level: 1 
+                    },
+                    { 
+                        id: 15, 
+                        text: "«Құман», «половец» атауларымен де белгілі болған тайпа:", 
+                        options: [
+                            "A) наймандар", 
+                            "B) керейлер", 
+                            "C) оғыздар", 
+                            "D) қарахандар", 
+                            "E) қыпшақтар"
+                        ], 
+                        correct: "E) қыпшақтар", 
+                        level: 1 
+                    },
+                    { 
+                        id: 16, 
+                        text: "Сарыарқа, Ұлытау аймақтары кірген ұлыс:", 
+                        options: [
+                            "A) Шағатай ұлысы", 
+                            "B) Үгедей ұлысы", 
+                            "C) Төле ұлысы", 
+                            "D) Жошы ұлысы", 
+                            "E) Көшім ұлысы"
+                        ], 
+                        correct: "D) Жошы ұлысы", 
+                        level: 1 
+                    },
+                    { 
+                        id: 17, 
+                        text: "XVI ғ. соңында Мәуереннахрда билікке келген әулет:", 
+                        options: [
+                            "A) хашимиттер", 
+                            "B) аштарханидтер", 
+                            "C) сефевидтер", 
+                            "D) ахеменидтер", 
+                            "E) аршакидтер"
+                        ], 
+                        correct: "B) аштарханидтер", 
+                        level: 1 
+                    },
+                    { 
+                        id: 18, 
+                        text: "Республиканың «ҚырғызАКСР» атауы «ҚазақАКСР» атауына өзгертілді:", 
+                        options: [
+                            "A) 1917 жылы", 
+                            "B) 1922 жылы", 
+                            "C) 1923 жылы", 
+                            "D) 1925 жылы", 
+                            "E) 1928 жылы"
+                        ], 
+                        correct: "D) 1925 жылы", 
+                        level: 1 
+                    },
+                    { 
+                        id: 19, 
+                        text: "Б .з.д. 337 жылы Филипп II басшылығымен эллиндік одақ құрылды. Одақтың басты міндеті?", 
+                        options: [
+                            "A) Балқан түбегін жаулап алу", 
+                            "B) Парсы патшалығын жаулап алу", 
+                            "C) Үндістанды Жаулап Алу", 
+                            "D) Сирияны Жаулап Алу", 
+                            "E) Орта Азияны Жаулап Алу"
+                        ], 
+                        correct: "B) Парсы патшалығын жаулап алу", 
+                        level: 2 
+                    },
+                    { 
+                        id: 20, 
+                        text: "Б.з.д. 264-241 жылдары Рим бірінші Пуникалық соғыс, содан кейін 218-201 жылдары екінші Пуникалық соғыс жүргізді, нәтижесінде ол Батыс Жерорта теңізінің толық қожайыны болды. Осы жылдары Рим қай мемлекетпен соғыс жүргізді?", 
+                        options: [
+                            "A) Македония", 
+                            "B) Сирия", 
+                            "C) Карфаген", 
+                            "D) Мысыр", 
+                            "E) Греция"
+                        ], 
+                        correct: "C) Карфаген", 
+                        level: 2 
+                    }
+                ]
+            },
+            "11": {
+                questions: [
+                    { 
+                        id: 1, 
+                        text: "Шыңғыс хан тұрмыс салт ережелері мен моңғолдар өмірін қамтыған арнайы заңдар жинағын шығарды. Сол заң қалай аталады?", 
+                        options: [
+                            "A) «Ұлы Жасақ»", 
+                            "B) «Ата заң»", 
+                            "C) «Манускрипт»", 
+                            "D) «Шыңғыс ханның кодексі»", 
+                            "E) «Моңғолдардың шындығы»"
+                        ], 
+                        correct: "A) «Ұлы Жасақ»", 
+                        level: 1 
+                    },
+                    { 
+                        id: 2, 
+                        text: "Моңғол империясы төрт бөліктен құралды. 1227 жылы Шыңғыс хан қайтыс болады. Ұлы хан мәртебесін (Моңғол империясының жоғары билеушісі) Шыңғыс ханнан кейін кім иеленді?", 
+                        options: [
+                            "A) Жебе нойон", 
+                            "B) Шағатай", 
+                            "C) Үгедей", 
+                            "D) Жошы", 
+                            "E) Төле"
+                        ], 
+                        correct: "C) Үгедей", 
+                        level: 1 
+                    },
+                    { 
+                        id: 3, 
+                        text: "Қай ханның бұйрығымен жаулап алынған елдерде халық санағы жүргізілді?", 
+                        options: [
+                            "A) Бату хан", 
+                            "B) Мөңке хан", 
+                            "C) Шыңғыс хан", 
+                            "D) Өзбек хан", 
+                            "E) Жошы хан"
+                        ], 
+                        correct: "B) Мөңке хан", 
+                        level: 1 
+                    },
+                    { 
+                        id: 4, 
+                        text: "Алтын Орда мемлекетінде ислам діні мемлекеттік дін болып қабылданды. Қай ханның тұсында?", 
+                        options: [
+                            "A) Бату хан", 
+                            "B) Берке хан", 
+                            "C) Тоқтамыш хан", 
+                            "D) Өзбек хан", 
+                            "E) Жәнібек хан"
+                        ], 
+                        correct: "D) Өзбек хан", 
+                        level: 1 
+                    },
+                    { 
+                        id: 5, 
+                        text: "Әмір Темірдің өмір сүрген жылдары.", 
+                        options: [
+                            "A) 1336-1405 жж.", 
+                            "B) 1326-1401 жж.", 
+                            "C) 1338-1408 жж.", 
+                            "D) 1370-1415 жж.", 
+                            "E) 1343-1405 жж."
+                        ], 
+                        correct: "A) 1336-1405 жж.", 
+                        level: 1 
+                    },
+                    { 
+                        id: 6, 
+                        text: "«Этнос – әлеуметтік емес, табиғи құбылыс» деген этнос теориясын ұсынған ғалым?", 
+                        options: [
+                            "A) Ю.В. Бромлей", 
+                            "B) С.М. Широкогоров", 
+                            "C) Л.Н. Гумилев", 
+                            "D) Ч. Дарвин", 
+                            "E) Ф. Энгельс"
+                        ], 
+                        correct: "C) Л.Н. Гумилев", 
+                        level: 1 
+                    },
+                    { 
+                        id: 7, 
+                        text: "Этникалық сезім мен этникалық түсінік интеллектуалдық құрылым болып саналатын теория:", 
+                        options: [
+                            "A) конструктивті", 
+                            "B) пассионарлық", 
+                            "C) эволюционизм", 
+                            "D) космогенез", 
+                            "E) конфронтация"
+                        ], 
+                        correct: "A) конструктивті", 
+                        level: 1 
+                    },
+                    { 
+                        id: 8, 
+                        text: "Қоғам өмірінің барлық саласындағы этностар арасындағы қатынастарды реттейтін, мемлекеттің саяси қызметінің құрамдас бөлігі.", 
+                        options: [
+                            "A) Ұлттық саясат", 
+                            "B) Ұлттық мәселе", 
+                            "C) Ұлттық діл", 
+                            "D) Ұлттық тіл", 
+                            "E) Ұлтаралық қатынас"
+                        ], 
+                        correct: "A) Ұлттық саясат", 
+                        level: 1 
+                    },
+                    { 
+                        id: 9, 
+                        text: "ЕҚЫҰ Еуропа, Солтүстік Америка және Азияда орналасқан қанша мемлекетті біріктіреді?", 
+                        options: [
+                            "A) 57", 
+                            "B) 28", 
+                            "C) 25", 
+                            "D) 33", 
+                            "E) 120"
+                        ], 
+                        correct: "A) 57", 
+                        level: 1 
+                    },
+                    { 
+                        id: 10, 
+                        text: "ЕҚЫҰ саммиті Астана қаласында қай жылы өткізілді?", 
+                        options: [
+                            "A) 2017 ж.", 
+                            "B) 2010 ж.", 
+                            "C) 1998 ж.", 
+                            "D) 1996 ж.", 
+                            "E) 2012 ж."
+                        ], 
+                        correct: "B) 2010 ж.", 
+                        level: 1 
+                    },
+                    { 
+                        id: 11, 
+                        text: "Қуаңданған экологиялық ортаның қалыптасуына байланысты Қазақстанда қалыптасқан шаруашылық түрі:", 
+                        options: [
+                            "A) жәрмеңкелік сауда", 
+                            "B) танаптық егіншілік", 
+                            "C) көшпелі мал шаруашылығы", 
+                            "D) жеңіл өнеркәсіп", 
+                            "E) ағаш ұсталығы"
+                        ], 
+                        correct: "C) көшпелі мал шаруашылығы", 
+                        level: 1 
+                    },
+                    { 
+                        id: 12, 
+                        text: "VI-IX ғғ. Ұлы Жібек жолы бойында қала өркениеті дамыған аймақ:", 
+                        options: [
+                            "A) Оңтүстік Қазақстан", 
+                            "B) Батыс Қазақстан", 
+                            "C) Орталық Қазақстан", 
+                            "D) Шығыс Қазақстан", 
+                            "E) Солтүстік Қазақстан"
+                        ], 
+                        correct: "A) Оңтүстік Қазақстан", 
+                        level: 1 
+                    },
+                    { 
+                        id: 13, 
+                        text: "XVIII ғ. 20 жж. Ресейдің оңтүстік сібірлік шептерін қорғау үшін Қазақстанда салынған бекіністер:", 
+                        options: [
+                            "A) Іле, Қапал", 
+                            "B) Семей, Өскемен", 
+                            "C) Райым, Қазалы", 
+                            "D) Верный, Мерке", 
+                            "E) Әулиеата, Ақмешіт"
+                        ], 
+                        correct: "A) Іле, Қапал", 
+                        level: 1 
+                    },
+                    { 
+                        id: 14, 
+                        text: "ХІХ ғ. соңында көшпелі халықтан жиналған «түтін салығы» көлемі:", 
+                        options: [
+                            "A) 1,5 рубль күміс", 
+                            "B) 2,5 рубль күміс", 
+                            "C) 3,5 рубль күміс", 
+                            "D) 4,5 рубль күміс", 
+                            "E) 5,5 рубль күміс"
+                        ], 
+                        correct: "B) 2,5 рубль күміс", 
+                        level: 1 
+                    },
+                    { 
+                        id: 15, 
+                        text: "Қазақстандағы 1991-1993 жж. нарықтық экономиканы енгізуге тән оқиға:", 
+                        options: [
+                            "A) ұжымдастыру", 
+                            "B) индустрияландыру", 
+                            "C) мемлекеттендіру", 
+                            "D) ірілендіру", 
+                            "E) жекешелендіру"
+                        ], 
+                        correct: "E) жекешелендіру", 
+                        level: 1 
+                    },
+                    { 
+                        id: 16, 
+                        text: "Халықтарды күштеп қоныс аудару:", 
+                        options: [
+                            "A) миграция", 
+                            "B) иммиграция", 
+                            "C) депортация", 
+                            "D) конфискация", 
+                            "E) эмиграция"
+                        ], 
+                        correct: "C) депортация", 
+                        level: 1 
+                    },
+                    { 
+                        id: 17, 
+                        text: "«Астана» қаласының атауы «Нұр-Сұлтан» болып өзгертілді:", 
+                        options: [
+                            "A) 1995 жылы", 
+                            "B) 1997 жылы", 
+                            "C) 2005 жылы", 
+                            "D) 2011 жылы", 
+                            "E) 2019 жылы"
+                        ], 
+                        correct: "E) 2019 жылы", 
+                        level: 1 
+                    },
+                    { 
+                        id: 18, 
+                        text: "Түркі тіліндегі алғашқы классикалық поэма «Құтты білік» шығармасының авторы:", 
+                        options: [
+                            "A) Ж. Баласағұн", 
+                            "B) Әл Фараби", 
+                            "C) М. Қашғари", 
+                            "D) А. Иүгнеки", 
+                            "E) Қ.А. Йассауи"
+                        ], 
+                        correct: "A) Ж. Баласағұн", 
+                        level: 1 
+                    },
+                    { 
+                        id: 19, 
+                        text: "«Көшпелі халық философы» атанған жырау:", 
+                        options: [
+                            "A) Асанқайғы", 
+                            "B) Жиембет", 
+                            "C) Марғасқа", 
+                            "D) Шал ақын", 
+                            "E) Сыпыра жырау"
+                        ], 
+                        correct: "A) Асанқайғы", 
+                        level: 1 
+                    },
+                    { 
+                        id: 20, 
+                        text: "А. Македонский жорықтары жайлы мәлімет кездесетін Үлкен Плинийдің еңбегін атаңыз:", 
+                        options: [
+                            "A) «Тарих»", 
+                            "B) «География»", 
+                            "C) «Авеста»", 
+                            "D) «Жаратылыстану тарихы»", 
+                            "E) «Асыл тастар»"
+                        ], 
+                        correct: "D) «Жаратылыстану тарихы»", 
+                        level: 1 
+                    }
+                ]
+            }
+        };
+
+        // Негізгі функциялар
+        function updateContent(lang) {
+            const data = content[lang];
+            
+            // Тақырып
+            document.getElementById('header-title').textContent = data.header.title;
+            document.getElementById('header-subtitle').textContent = data.header.subtitle;
+            document.getElementById('header-school').textContent = data.header.school;
+            
+            // Навигация
+            document.getElementById('nav-home').textContent = data.nav.home;
+            document.getElementById('nav-about').textContent = data.nav.about;
+            document.getElementById('nav-teachers').textContent = data.nav.teachers;
+            document.getElementById('nav-achievements').textContent = data.nav.achievements;
+            document.getElementById('nav-tests').textContent = data.nav.tests;
+            
+            // Негізгі бет
+            document.getElementById('hero-title').textContent = data.hero.title;
+            document.getElementById('hero-subtitle').textContent = data.hero.subtitle;
+            document.getElementById('hero-motto').textContent = data.hero.motto;
+            document.getElementById('hero-description').innerHTML = data.hero.description.replace(/\n\n/g, '</p><p>');
+            document.getElementById('teacher-title').textContent = data.hero.teacherTitle;
+            document.getElementById('teacher-name').textContent = data.hero.teacherName;
+            document.getElementById('teacher-info').textContent = data.hero.teacherInfo;
+            document.getElementById('experience-btn-text').textContent = data.experience.btnText;
+            
+            // Клуб туралы
+            document.getElementById('about-title').textContent = data.about.title;
+            document.getElementById('about-description').textContent = data.about.description;
+            document.getElementById('modules-title').textContent = data.about.modulesTitle;
+            document.getElementById('module1-title').textContent = data.about.module1Title;
+            document.getElementById('module1-text').textContent = data.about.module1Text;
+            document.getElementById('module1-desc').textContent = data.about.module1Desc;
+            document.getElementById('module2-title').textContent = data.about.module2Title;
+            document.getElementById('module2-text').textContent = data.about.module2Text;
+            document.getElementById('module2-desc').textContent = data.about.module2Desc;
+            document.getElementById('module3-title').textContent = data.about.module3Title;
+            document.getElementById('module3-text').textContent = data.about.module3Text;
+            document.getElementById('module3-desc').textContent = data.about.module3Desc;
+            document.getElementById('plan-title').textContent = data.about.planTitle;
+            document.getElementById('plan-description').textContent = data.about.planDescription;
+            document.getElementById('plan-col1').textContent = data.about.planCol1;
+            document.getElementById('plan-col2').textContent = data.about.planCol2;
+            document.getElementById('plan-col3').textContent = data.about.planCol3;
+            document.getElementById('tasks-title').textContent = data.about.tasksTitle;
+            
+            // Жоспар кестесі
+            const planTable = document.getElementById('plan-content');
+            planTable.innerHTML = '';
+            data.about.plan.forEach(item => {
+                const row = document.createElement('tr');
+                if (item.quarter) {
+                    row.className = 'quarter-row';
+                    row.innerHTML = `<td colspan="3">${item.quarter}</td>`;
+                } else {
+                    row.innerHTML = `
+                        <td>${item.num}</td>
+                        <td>${item.topic}</td>
+                        <td>${item.hours}</td>
+                    `;
+                }
+                planTable.appendChild(row);
+            });
+            
+            // Тапсырмалар тізімі
+            const tasksList = document.getElementById('tasks-list');
+            tasksList.innerHTML = '';
+            data.about.tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = task;
+                tasksList.appendChild(li);
+            });
+            
+            // Мұғалімдерге бөлімі
+            document.getElementById('teachers-title').textContent = data.teachers.title;
+            document.getElementById('teachers-description').textContent = data.teachers.description;
+            
+            // Чек-лист
+            const checklistTable = document.getElementById('checklist-content');
+            checklistTable.innerHTML = '';
+            data.teachers.checklist.forEach((question, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${question}</td>
+                    <td class="checkbox-cell"><input type="checkbox" class="check-yes"></td>
+                    <td class="checkbox-cell"><input type="checkbox" class="check-no"></td>
+                `;
+                checklistTable.appendChild(row);
+            });
+            
+            // Оқушы жетістіктері
+            document.getElementById('achievements-title').textContent = data.achievements.title;
+            document.getElementById('achievements-description').textContent = data.achievements.description;
+            
+            // Тесттер
+            document.getElementById('tests-title').textContent = data.tests.title;
+            document.getElementById('tests-description').textContent = data.tests.description;
+            document.getElementById('test9-title').textContent = data.tests.test9Title;
+            document.getElementById('test10-title').textContent = data.tests.test10Title;
+            document.getElementById('test11-title').textContent = data.tests.test11Title;
+            document.getElementById('reset-btn-text').textContent = data.tests.resetBtnText;
+            document.getElementById('submit-btn-text').textContent = data.tests.submitBtnText;
+            document.getElementById('diagnostic-title').textContent = data.tests.diagnosticTitle;
+            document.getElementById('level1-label').textContent = data.tests.level1Label;
+            document.getElementById('level2-label').textContent = data.tests.level2Label;
+            document.getElementById('level3-label').textContent = data.tests.level3Label;
+            document.getElementById('total-questions-text').textContent = data.tests.totalQuestionsText;
+            document.getElementById('correct-answers-text').textContent = data.tests.correctAnswersText;
+            document.getElementById('incorrect-answers-text').textContent = data.tests.incorrectAnswersText;
+            document.getElementById('percentage-text').textContent = data.tests.percentageText;
+            
+            // Футер
+            document.getElementById('footer-title').textContent = data.footer.title;
+            document.getElementById('footer-description').textContent = data.footer.description;
+            document.getElementById('footer-school').textContent = data.footer.school;
+            document.getElementById('footer-home').textContent = data.footer.home;
+            document.getElementById('footer-about').textContent = data.footer.about;
+            document.getElementById('footer-teachers').textContent = data.footer.teachers;
+            document.getElementById('footer-achievements').textContent = data.footer.achievements;
+            document.getElementById('footer-tests').textContent = data.footer.tests;
+            document.getElementById('footer-note').textContent = data.footer.note;
+            
+            // Модалды терезе
+            document.getElementById('modal-title').textContent = data.experience.modalTitle;
+            document.getElementById('modal-content').innerHTML = data.experience.content;
+            
+            // Құжат тілі
+            document.documentElement.lang = lang;
+        }
+
+        // Тесттерді көрсету функциясы
+        function renderTest(classNumber) {
+            const testContainer = document.getElementById(`test-${classNumber}`);
+            const questionsContainer = document.getElementById(`test${classNumber}-questions`);
+            const testData = testQuestions[classNumber];
+            
+            if (!testData) return;
+            
+            questionsContainer.innerHTML = '';
+            
+            testData.questions.forEach((question, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                questionElement.dataset.id = question.id;
+                questionElement.dataset.correct = question.correct;
+                questionElement.dataset.level = question.level;
+                
+                let optionsHTML = '';
+                if (question.options && question.options.length > 0) {
+                    optionsHTML = `
+                        <div class="options">
+                            ${question.options.map(opt => `
+                                <div class="option" data-value="${opt}">
+                                    ${opt}
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+                
+                questionElement.innerHTML = `
+                    <div class="question-number">
+                        <i class="fas fa-question-circle"></i>
+                        ${index + 1}. ${question.text}
+                    </div>
+                    ${optionsHTML}
+                `;
+                
+                questionsContainer.appendChild(questionElement);
+                
+                // Жауаптарды таңдау
+                if (question.options && question.options.length > 0) {
+                    questionElement.querySelectorAll('.option').forEach(option => {
+                        option.addEventListener('click', function() {
+                            questionElement.querySelectorAll('.option').forEach(opt => {
+                                opt.classList.remove('selected');
+                            });
+                            this.classList.add('selected');
+                            questionElement.dataset.selected = this.dataset.value;
+                        });
+                    });
+                }
+            });
+        }
+
+             function calculateResults(classNumber) {
+            const testContainer = document.getElementById(`test-${classNumber}`);
+            const questions = testContainer.querySelectorAll('.question');
+            let totalQuestions = questions.length;
+            let correctAnswers = 0;
+            let incorrectAnswers = 0;
+            let level1 = 0, level2 = 0, level3 = 0;
+            let level1Correct = 0, level2Correct = 0, level3Correct = 0;
+
+            questions.forEach(question => {
+                const selectedOption = question.dataset.selected;
+                const correctAnswer = question.dataset.correct;
+                const level = parseInt(question.dataset.level);
+
+                // Деңгей бойынша есептеу
+                if (level === 1) level1++;
+                else if (level === 2) level2++;
+                else if (level === 3) level3++;
+
+                if (selectedOption === correctAnswer) {
+                    correctAnswers++;
+                    if (level === 1) level1Correct++;
+                    else if (level === 2) level2Correct++;
+                    else if (level === 3) level3Correct++;
+                    
+                    // Дұрыс жауапты белгілеу
+                    question.querySelectorAll('.option').forEach(option => {
+                        if (option.dataset.value === correctAnswer) {
+                            option.classList.add('correct');
+                        }
+                    });
+                } else if (selectedOption) {
+                    incorrectAnswers++;
+                    
+                    // Қате жауапты белгілеу
+                    question.querySelectorAll('.option').forEach(option => {
+                        if (option.dataset.value === selectedOption) {
+                            option.classList.add('incorrect');
+                        }
+                        if (option.dataset.value === correctAnswer) {
+                            option.classList.add('correct');
+                        }
+                    });
+                } else {
+                    incorrectAnswers++;
+                    
+                    // Дұрыс жауапты көрсету
+                    question.querySelectorAll('.option').forEach(option => {
+                        if (option.dataset.value === correctAnswer) {
+                            option.classList.add('correct'); 
+                        }
+                    });
+                }
+            });
+
+            const percentage = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+            const level1Percentage = level1 > 0 ? Math.round((level1Correct / level1) * 100) : 0;
+            const level2Percentage = level2 > 0 ? Math.round((level2Correct / level2) * 100) : 0;
+            const level3Percentage = level3 > 0 ? Math.round((level3Correct / level3) * 100) : 0;
+
+            const diagnosticContainer = document.getElementById(`diagnostic-${classNumber}`);
+            diagnosticContainer.style.display = 'block';
+
+            // Анимациямен графиктерді көрсету
+            setTimeout(() => {
+                document.getElementById(`level1-fill`).style.width = `${level1Percentage}%`;
+                document.getElementById(`level1-fill`).textContent = `${level1Percentage}%`;
+                document.getElementById(`level1-percentage`).textContent = `${level1Percentage}%`;
+                
+                document.getElementById(`level2-fill`).style.width = `${level2Percentage}%`;
+                document.getElementById(`level2-fill`).textContent = `${level2Percentage}%`;
+                document.getElementById(`level2-percentage`).textContent = `${level2Percentage}%`;
+                
+                document.getElementById(`level3-fill`).style.width = `${level3Percentage}%`;
+                document.getElementById(`level3-fill`).textContent = `${level3Percentage}%`;
+                document.getElementById(`level3-percentage`).textContent = `${level3Percentage}%`;
+                
+                diagnosticContainer.querySelector('#total-questions-value').textContent = totalQuestions;
+                diagnosticContainer.querySelector('#correct-answers-value').textContent = correctAnswers;
+                diagnosticContainer.querySelector('#incorrect-answers-value').textContent = incorrectAnswers;
+                diagnosticContainer.querySelector('#percentage-value').textContent = `${percentage}%`;
+            }, 100);
+            
+            diagnosticContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            // Бастапқы тілді орнату
+            updateContent('kz');
+            
+            // Скролл кезіндегі бөлімдердің пайда болу анимациясы
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        const moduleCards = entry.target.querySelectorAll('.module-card');
+                        moduleCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 200);
+                        });
+                        const achievementCards = entry.target.querySelectorAll('.achievement-card');
+                        achievementCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
+                });
+            }, { threshold: 0.1 }); 
+
+            sections.forEach(section => {
+                observer.observe(section);
+            }); 
+
+            // Скролл кезіндегі прогресс жолағы
+            const scrollProgress = document.getElementById('scrollProgress');
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                scrollProgress.style.width = scrolled + "%";
+            }); 
+
+            // Тіл ауыстыру
+            document.getElementById('lang-kz').addEventListener('click', () => {
+                document.getElementById('lang-kz').classList.add('active');
+                document.getElementById('lang-ru').classList.remove('active');
+                updateContent('kz');
+            });
+            
+            document.getElementById('lang-ru').addEventListener('click', () => {
+                document.getElementById('lang-ru').classList.add('active');
+                document.getElementById('lang-kz').classList.remove('active');
+                updateContent('ru');
+            });
+             fdfgsdfgsdfg
+            // Мобильдік мәзір
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Навигация
+            document.querySelectorAll('.nav-link, .footer-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    }); 
+                });
+            });
+            
+            // Жоғарыға өту түймесі
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Тәжірибе модалды терезесі
+            const experienceModal = document.getElementById('experienceModal');
+            const experienceBtn = document.getElementById('experienceBtn');
+            const closeModal = document.getElementById('closeModal');
+            
+            experienceBtn.addEventListener('click', () => {
+                experienceModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeModal.addEventListener('click', () => {
+                experienceModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            experienceModal.addEventListener('click', (e) => {
+                if (e.target === experienceModal) {
+                    experienceModal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; 
+                }
+            });
+            
+            // Тесттерді басқару
+            const classBtns = document.querySelectorAll('.class-btn');
+            classBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const classNumber = this.dataset.class;
+                    
+                    classBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    document.querySelectorAll('.test-container').forEach(container => {
+                        container.classList.remove('active');
+                    });
+                    document.getElementById(`test-${classNumber}`).classList.add('active');
+                    
+                    renderTest(classNumber);
+                });
+            });
+            
+            // Тестті аяқтау түймелері
+            document.getElementById('submit-test-9').addEventListener('click', () => calculateResults('9'));
+            document.getElementById('submit-test-10').addEventListener('click', () => calculateResults('10'));
+            document.getElementById('submit-test-11').addEventListener('click', () => calculateResults('11'));
+            
+            // Тестті қайта бастау түймелері
+            document.getElementById('reset-test-9').addEventListener('click', () => renderTest('9'));
+            document.getElementById('reset-test-10').addEventListener('click', () => renderTest('10'));
+            document.getElementById('reset-test-11').addEventListener('click', () => renderTest('11'));
+            
+            // Бастапқы тестті көрсету
+            renderTest('9');
+            
+            // Чек-листтегі чекбокстарды басқару
+            document.addEventListener('change', function(e) {
+                if (e.target.classList.contains('check-yes')) {
+                    const row = e.target.closest('tr');
+                    const noCheckbox = row.querySelector('.check-no');
+                    if (e.target.checked) {
+                        noCheckbox.checked = false;
+                    }
+                }
+                if (e.target.classList.contains('check-no')) {
+                    const row = e.target.closest('tr');
+                    const yesCheckbox = row.querySelector('.check-yes');
+                    if (e.target.checked) {
+                        yesCheckbox.checked = false;
+                        
+                }
+            // Фондық суретті өңдеу
+            const heroBackground = document.querySelector('.hero-background');
+            heroBackground.onerror = function() {
+                this.style.backgroundImage = 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)';
+            };
+            
+            // Сертификаттардың суреттерін өңдеу
+            document.querySelectorAll('.achievement-image').forEach(img => {
+                img.onerror = function() {
+                    this.src = 'https://via.placeholder.com/400x300/0066ff/ffffff?text=Сертификат';
+                };
+            });
+        });
+    </script>
+</body>
+</html>

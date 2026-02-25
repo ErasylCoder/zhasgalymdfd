@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Әдістемелік құрал - Жас Ғалым</title>
+    <link rel="icon" href="were.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0052d4;
+            --secondary: #00c9ff;
+            --accent: #ff3366;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --light: #ffffff;
+            --dark: #1a1a2e;
+            --gray: #64748b;
+            --gray-light: #f1f5f9;
+            --gray-bg: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--gray-bg) 0%, #eef2ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .methodology-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .methodology-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .methodology-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 Z"/></svg>');
+            background-size: cover;
+        }
+
+        .methodology-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative; 
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .methodology-subtitle {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .methodology-info {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .methodology-author {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .methodology-year {
+            font-size: 16px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .methodology-content {
+            padding: 60px 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--gray-light);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .section-content {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--dark);
+        }
+
+        .section-content p {
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 201, 255, 0.05));
+            border-left: 4px solid var(--primary);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 30px; 
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--gray-light);
+            transition: transform 0.3s ease, box-shadow 0.3s
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.1);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 10px;
+            border: 1px solid var(--gray-light);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-weight: 600;
+            padding: 18px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        td {
+            padding: 15px 18px;
+            border-bottom: 1px solid var(--gray-light);
+            font-size: 15px;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.01);
+        }
+
+        tr:hover {
+            background: rgba(0, 102, 255, 0.05);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.3);
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 201, 255, 0.05));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 60px;
+            border: 2px dashed rgba(0, 102, 255, 0.2);
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            padding: 18px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 17px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-light);
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .methodology-header {
+                padding: 40px 20px;
+            }
+            
+            .methodology-title {
+                font-size: 32px;
+            }
+            
+            .methodology-subtitle {
+                font-size: 20px;
+            }
+            
+            .methodology-content {
+                padding: 40px 20px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-section {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .methodology-title {
+                font-size: 28px;
+            }
+            
+            .methodology-subtitle {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .back-button,
+            .download-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="methodology-container">
+        <!-- Құжат тақырыбы -->
+        <div class="methodology-header">
+            <h1 class="methodology-title">«Зерттеу жолы: идеядан нәтижеге дейін»</h1>
+            <div class="methodology-subtitle">Мұғалімдерге арналған әдістемелік құрал</div>
+            <div class="methodology-info">
+                <div class="methodology-author">№6 Хромтау гимназиясы</div>
+                <div class="methodology-year">Құрастырған: тарих пәнінің мұғалімі Карагулова Д.К.</div>
+                <div class="methodology-year">Хромтау - 2025</div>
+            </div>
+        </div>
+
+        <!-- Негізгі мазмұн -->
+        <div class="methodology-content">
+            <!-- Кіріспе -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-book-open"></i> Кіріспе</h2>
+                <div class="section-content">
+                    <p>Бұл құрал пән мұғалімдеріне зерттеу жұмыстарын жүргізу барысында бағыт-бағдар беруге арналған. Бұл құралдың негізгі мақсаты – мұғалімдерге оқушылардың ғылыми-зерттеу жұмыстарын дұрыс ұйымдастыруға және сауатты жазуға әдістемелік қолдау көрсету.</p>
+                    
+                    <div class="highlight-box">
+                        <p>Қазіргі таңда білім берудегі маңызды бағыттардың бірі – оқушылардың зерттеушілік және жобалық қабілеттерін дамыту. Оқушыны ғылыми ізденіске баулу барысында мұғалім жетекші әрі бағыттаушы рөл атқарады.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ғылыми жоба туралы -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Ғылыми жоба дегеніміз не?</h2>
+                <div class="section-content">
+                    <p>Ғылыми жобалар — оқушылардың зерттеушілік дағдыларын дамытуға, дербес ойлауына, тәжірибе жасау арқылы білімін тереңдетуге бағытталған жұмыстар. Мұғалімнің рөлі — ғылыми жобаны ұйымдастырушы, бағыттаушы және кеңесші болу.</p>
+                    
+                    <p>Қазіргі заманда әлем қарқынды даму үстінде. Ғылым мен технологияның алға жылжуы білім беру жүйесінің де өзгеруін талап етеді. ХХІ ғасыр оқушысы тек дайын ақпаратты жаттап қоймай, оны ізденіп табуға, талдауға, салыстыруға және қолдануға қабілетті болуы керек. Осындай қабілеттерді қалыптастырудың тиімді жолдарының бірі – зерттеушілік қызметті ерте жастан дамыту.</p>
+                </div>
+            </div>
+
+            <!-- Жұмыс барысы -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-list-ol"></i> Жұмысты неден бастау керек?</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">ТАҚЫРЫП ТАҢДАУ</h3>
+                        <p>Өзекті, зерттелуге тұрарлық тақырыпты таңдау</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">ЖОСПАР ҚҰРУ</h3>
+                        <p>Жұмыс барысын жоспарлау</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">ЗЕРТТЕУ КҮНДЕЛІГІ</h3>
+                        <p>Зерттеу күнделігін жүргізу</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">ӘДЕБИЕТТЕРМЕН ЖҰМЫС</h3>
+                        <p>Ғылыми әдебиеттермен жұмыс жасау</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">ҚОСАЛҚЫ ҚҰЖАТТАР</h3>
+                        <p>Жобаның қосалқы құжаттарын дайындау</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">6</div>
+                        <h3 class="step-title">РӘСІМДЕУ</h3>
+                        <p>Ғылыми жобаны техникалық тұрғыдан рәсімдеу</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Қателер -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Ғылыми жоба жазу кезінде кездесетін қателер</h2>
+                <div class="section-content">
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="padding: 10px 0 10px 30px; position: relative; margin-bottom: 10px;">
+                            <i class="fas fa-times" style="position: absolute; left: 0; color: var(--accent);"></i>
+                            Ғылыми жобаның тақырыбын, бағытын, секциясын дұрыс таңдамау
+                        </li>
+                        <li style="padding: 10px 0 10px 30px; position: relative; margin-bottom: 10px;">
+                            <i class="fas fa-times" style="position: absolute; left: 0; color: var(--accent);"></i>
+                            Жұмыстың құрылымын білмеу
+                        </li>
+                        <li style="padding: 10px 0 10px 30px; position: relative; margin-bottom: 10px;">
+                            <i class="fas fa-times" style="position: absolute; left: 0; color: var(--accent);"></i>
+                            Ғылыми жұмыстың логикасын дұрыс түсінбеу
+                        </li>
+                        <li style="padding: 10px 0 10px 30px; position: relative; margin-bottom: 10px;">
+                            <i class="fas fa-times" style="position: absolute; left: 0; color: var(--accent);"></i>
+                            «Кіріспе» бөліміне дұрыс көңіл бөлмеу
+                        </li>
+                        <li style="padding: 10px 0 10px 30px; position: relative; margin-bottom: 10px;">
+                            <i class="fas fa-times" style="position: absolute; left: 0; color: var(--accent);"></i>
+                            Алдымен практикалық бөлігін жазып алып, жұмыстың теориясын соңынан жазамын деп ойлау
+                        </li>
+                        <li style="padding: 10px 0 10px 30px; position: relative; margin-bottom: 10px;">
+                            <i class="fas fa-times" style="position: absolute; left: 0; color: var(--accent);"></i>
+                            Жұмыстың тек қана теориялық материалдардан тұруы немесе практикалық бөлігінің болмауы
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ғылыми жобаның құрылымы -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-sitemap"></i> Ғылыми жобаның құрылымы</h2>
+                <div class="section-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Бөлім</th>
+                                    <th>Сипаттамасы</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><strong>Тақырып таңдау</strong></td>
+                                    <td>Өзекті, зерттелуге тұрарлық болуы керек. Оқушының қызығушылығына және жас ерекшелігіне сай болуы қажет.</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><strong>Мақсаты мен міндеттері</strong></td>
+                                    <td>Мақсат — жобаның неге бағытталғанын көрсету. Міндеттер — мақсатқа жету үшін жасалатын нақты әрекеттер.</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><strong>Зерттеу нысаны мен пәні</strong></td>
+                                    <td>Зерттеу нысаны — жалпы зерттелетін құбылыс. Зерттеу пәні — сол нысан ішіндегі нақты аспект.</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><strong>Зерттеу әдістері</strong></td>
+                                    <td>Байқау, сұхбат, сауалнама, тәжірибе, модельдеу, салыстыру, сараптама жасау т.б.</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><strong>Жаңалығы мен практикалық мәні</strong></td>
+                                    <td>Жаңа мәлімет, тәсіл немесе шешім ұсыну. Қоғамға, мектепке немесе ғылымға қандай пайда әкелетіні көрсетіледі.</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td><strong>Негізгі бөлім</strong></td>
+                                    <td>Жеткілікті теориялық негіз, әдебиеттерге шолу. Тәжірибелік жұмыс барысы мен алынған нәтиже.</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td><strong>Қорытынды</strong></td>
+                                    <td>Жұмыстың нәтижесі, қол жеткізілген табыстар, ұсыныстар.</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td><strong>Әдебиеттер тізімі</strong></td>
+                                    <td>Ғылыми мақалалар, кітаптар, интернет-ресурстар, дереккөздер.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Мұғалімнің ролі -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-chalkboard-teacher"></i> Мұғалімнің ролі</h2>
+                <div class="section-content">
+                    <div class="highlight-box">
+                        <p><strong>Мұғалімнің жетекшілік міндеттері:</strong></p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="padding: 8px 0 8px 30px; position: relative;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                Тақырып таңдауда кеңес беру
+                            </li>
+                            <li style="padding: 8px 0 8px 30px; position: relative;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                Жоспар құруға көмектесу
+                            </li>
+                            <li style="padding: 8px 0 8px 30px; position: relative;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                Әдебиетпен жұмыс істеуге бағыт беру
+                            </li>
+                            <li style="padding: 8px 0 8px 30px; position: relative;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                Зерттеу жүргізу әдістерін үйрету
+                            </li>
+                            <li style="padding: 8px 0 8px 30px; position: relative;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                Уақытты дұрыс жоспарлауға үйрету
+                            </li>
+                            <li style="padding: 8px 0 8px 30px; position: relative;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                Жұмыс нәтижесін безендіруді қадағалау
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Жүктеп алу бөлімі -->
+            <div class="download-section">
+                <h2 style="color: var(--primary); margin-bottom: 20px; font-size: 28px;">
+                    <i class="fas fa-download"></i> Толық әдістемелік құрал
+                </h2>
+                <p>Толық нұсқасын PDF форматында жүктеп алыңыз</p>
+                <a href="#" class="download-button" id="downloadPdf">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Әдістемелік құралды жүктеп алу (PDF)</span>
+                </a>
+                <p style="margin-top: 15px; color: var(--gray); font-size: 14px;">
+                    Файл мөлшері: ~2.5 MB | Бет саны: 25
+                </p>
+            </div>
+
+            <!-- Негізгі сайтқа қайту -->
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                    Негізгі сайтқа оралу
+                </a>
+            </div>
+
+            <!-- Футер -->
+            <div class="footer">
+                <p>© 2025 №6 Хромтау гимназиясы. "Жас Ғалым" клубы</p>
+                <p>Барлық құқықтар қорғалған</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // PDF жүктеп алу түймесі
+            document.getElementById('downloadPdf').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Әдістемелік құрал PDF форматында жүктелу дайын. Бұл демонстрациялық үлгі, шынайы файлды жүктеп алу үшін methodology.pdf файлын серверге орналастырыңыз.');
+                // Нақты жүктеп алу үшін:
+                // window.open('methodology.pdf', '_blank');
+            });
+        });
+    </script>
+</body>
+</html>
